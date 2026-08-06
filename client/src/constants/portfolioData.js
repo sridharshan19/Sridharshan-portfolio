@@ -115,7 +115,7 @@ export const fallbackPortfolioData = {
         "CSV/PDF Exports",
         "Pickup Scheduling"
       ],
-      "description": "Developed a full-stack farm-to-consumer marketplace with role-based access. Designed inventory management, order tracking, analytics dashboards, and PDF report generation.",
+      "description": "Full-stack farm-to-consumer marketplace with role-based access, inventory tracking, analytics, and PDF report generation.",
       "github": "https://github.com/sridharshan19",
       "demo": "#",
       "icon": "🛒"
@@ -131,7 +131,7 @@ export const fallbackPortfolioData = {
         "CSV/PDF Reports",
         "JWT Security"
       ],
-      "description": "A comprehensive logistics tool. Integrated Brevo SMTP for automated email notifications and reminders, Recharts for visual dashboard performance metrics, and JWT for secure APIs.",
+      "description": "Fleet management tool integrating Brevo SMTP notifications, Recharts analytics dashboards, and JWT authentication.",
       "github": "https://github.com/sridharshan19",
       "demo": "#",
       "icon": "🚛"
@@ -147,7 +147,7 @@ export const fallbackPortfolioData = {
         "Google OAuth Authentication",
         "Razorpay Premium Integration"
       ],
-      "description": "A premium web app offering live resume building templates. Users can sign in, select beautiful schemas, auto-save state, and purchase premium features via a payment gateway.",
+      "description": "Dynamic resume creator with responsive templates, auto-save state, Google OAuth, and Razorpay payment integration.",
       "github": "https://github.com/sridharshan19",
       "demo": "#",
       "icon": "📄"
@@ -162,7 +162,7 @@ export const fallbackPortfolioData = {
         "Real-time Status Updates",
         "Visual Metrics"
       ],
-      "description": "Streamlined application to simplify and automate leave request pipelines. Employees apply for leave, and administrators can approve or reject with custom feedback.",
+      "description": "Automated leave request management platform with real-time status tracking and administrator approval dashboards.",
       "github": "https://github.com/sridharshan19",
       "demo": "#",
       "icon": "📅"

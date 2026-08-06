@@ -24,7 +24,7 @@ export default function Resume({ personal, education, internships, projects, ski
           <span className="pdf-proj-tag">{proj.tagline}</span>
         </div>
         <a href={proj.github} target="_blank" rel="noopener noreferrer" className="pdf-link">
-          GitHub&nbsp;<FaExternalLinkAlt style={{fontSize:"7pt",verticalAlign:"middle"}}/>
+          GitHub ↗
         </a>
       </div>
       <p className="pdf-body">{pdfDesc[proj.title] || proj.description}</p>
@@ -91,6 +91,26 @@ export default function Resume({ personal, education, internships, projects, ski
           .pdf-page-2 {
             page-break-after: auto;
             break-after: auto;
+          }
+          /* Page 1 — more breathing room to fill the page naturally */
+          .pdf-page-1 .pdf-sec {
+            margin-bottom: 16px;
+          }
+          .pdf-page-1 .pdf-entry {
+            margin-bottom: 11px;
+          }
+          .pdf-page-1 .pdf-proj {
+            margin-bottom: 12px;
+          }
+          .pdf-page-1 .pdf-bullets li {
+            margin-bottom: 4px;
+          }
+          .pdf-page-1 .pdf-body {
+            margin-bottom: 3px;
+          }
+          /* Page 2 — keep tighter spacing */
+          .pdf-page-2 .pdf-sec {
+            margin-bottom: 13px;
           }
 
           /* ── Header ── */
@@ -197,24 +217,24 @@ export default function Resume({ personal, education, internships, projects, ski
             white-space: nowrap;
           }
           .pdf-body {
-            margin: 0 0 2px;
+            margin: 0 0 3px;
             font-size: 10pt;
             color: #374151;
-            line-height: 1.3;
+            line-height: 1.32;
           }
           .pdf-bullets {
-            margin: 0 0 3px 14px;
+            margin: 0 0 4px 14px;
             padding: 0;
           }
           .pdf-bullets li {
             font-size: 10pt;
             color: #374151;
             margin: 0 0 3px;
-            line-height: 1.3;
+            line-height: 1.32;
           }
 
           /* ── Project-specific ── */
-          .pdf-proj { margin-bottom: 8px; }
+          .pdf-proj { margin-bottom: 9px; }
           .pdf-proj-head {
             display: flex;
             justify-content: space-between;
@@ -249,25 +269,27 @@ export default function Resume({ personal, education, internships, projects, ski
             white-space: nowrap;
           }
           .pdf-feats {
-            margin: 2px 0;
+            margin: 3px 0;
             font-size: 9.5pt;
             color: #374151;
-            line-height: 1.3;
+            line-height: 1.32;
           }
           .pdf-tech {
-            margin: 2px 0 0;
+            margin: 3px 0 0;
             font-size: 9.5pt;
             color: #374151;
-            line-height: 1.2;
+            line-height: 1.22;
+            white-space: nowrap;
+            overflow: hidden;
           }
-          .pdf-tech strong { color: #111827; font-weight: 700; }
+          .pdf-tech strong { color: #111827; font-weight: 700; margin-right: 2px; }
 
           /* ── Skills 2-col grid ── */
           .pdf-skills {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 20px;
-            row-gap: 3px;
+            column-gap: 40px;
+            row-gap: 4px;
           }
           .pdf-skill-row {
             font-size: 10pt;
@@ -277,16 +299,20 @@ export default function Resume({ personal, education, internships, projects, ski
           .pdf-skill-row strong { color: #111827; font-weight: 700; }
 
           /* ── Certifications 3-col ── */
-          .pdf-cert-table { display: grid; gap: 4px; }
+          .pdf-cert-table { display: grid; gap: 5px; }
           .pdf-cert-row {
             display: grid;
-            grid-template-columns: 2.8fr 1fr 0.4fr;
-            gap: 8px;
+            grid-template-columns: 2.6fr 1fr 0.42fr;
+            gap: 10px;
             align-items: baseline;
           }
           .pdf-cert-row span { font-size: 9.5pt; color: #374151; line-height: 1.25; }
           .pdf-cert-row strong { font-size: 9.5pt; font-weight: 600; color: #111827; }
-          .pdf-cert-row .pdf-cert-year { color: #6b7280; text-align: right; }
+          .pdf-cert-row .pdf-cert-year {
+            color: #6b7280;
+            text-align: right;
+            font-weight: 500;
+          }
           .pdf-cert-row a {
             font-size: 9.5pt;
             color: #2563eb;
@@ -295,11 +321,11 @@ export default function Resume({ personal, education, internships, projects, ski
           }
 
           /* ── Coding Profiles 3-col ── */
-          .pdf-profile-table { display: grid; gap: 4px; }
+          .pdf-profile-table { display: grid; gap: 5px; }
           .pdf-profile-row {
             display: grid;
-            grid-template-columns: 0.7fr 2fr 0.7fr;
-            gap: 8px;
+            grid-template-columns: 0.65fr 2fr 0.62fr;
+            gap: 10px;
             align-items: baseline;
           }
           .pdf-profile-row span { font-size: 9.5pt; color: #374151; line-height: 1.25; }
@@ -310,6 +336,7 @@ export default function Resume({ personal, education, internships, projects, ski
             text-decoration: none;
             font-weight: 600;
             text-align: right;
+            white-space: nowrap;
           }
 
           /* ── Achievement compact ── */
@@ -476,7 +503,7 @@ export default function Resume({ personal, education, internships, projects, ski
                 <div key={p.platform} className="pdf-profile-row">
                   <strong>{p.platform}</strong>
                   <span>
-                    {p.solved} Problems&nbsp;|&nbsp;
+                    {p.solved}&nbsp;|&nbsp;
                     {p.rating.replace("Contest Rating: ","Rating ")}
                     {p.globalRank && ` | ${p.globalRank.replace("Global Rank: ","Rank ")}`}
                   </span>
@@ -512,7 +539,7 @@ export default function Resume({ personal, education, internships, projects, ski
       </div>
 
       {/* ══════════════════════════════════════════════
-          WEBSITE / SCREEN LAYOUT (unchanged)
+          WEBSITE / SCREEN LAYOUT (enhanced with icons)
       ══════════════════════════════════════════════ */}
 
       {/* Floating Print Button */}
@@ -526,6 +553,47 @@ export default function Resume({ personal, education, internships, projects, ski
           <span className="hidden sm:inline text-xs uppercase tracking-wider">Save PDF</span>
         </button>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        .tech-chip {
+          display:inline-flex; align-items:center; gap:5px; padding:3px 9px;
+          border-radius:6px; font-size:11px; font-weight:500;
+          border:1px solid rgba(148,163,184,0.2); background:rgba(148,163,184,0.07);
+          color:#64748b; transition:all 0.2s ease; cursor:default; white-space:nowrap;
+        }
+        .dark .tech-chip { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); color:#94a3b8; }
+        .tech-chip:hover { background:rgba(99,102,241,0.1); border-color:rgba(99,102,241,0.3); color:#6366f1; transform:translateY(-1px); box-shadow:0 4px 12px rgba(99,102,241,0.15); }
+        .dark .tech-chip:hover { background:rgba(99,102,241,0.15); border-color:rgba(99,102,241,0.4); color:#a5b4fc; }
+        .tech-chip .tc-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; display:inline-block; }
+        .proj-card {
+          border-radius:12px; border:1px solid rgba(148,163,184,0.15);
+          padding:20px; background:rgba(148,163,184,0.03);
+          transition:all 0.3s ease; position:relative; overflow:hidden;
+        }
+        .proj-card::before {
+          content:''; position:absolute; inset:0;
+          background:linear-gradient(135deg,rgba(99,102,241,0.04) 0%,transparent 60%);
+          opacity:0; transition:opacity 0.3s ease;
+        }
+        .proj-card:hover { border-color:rgba(99,102,241,0.3); box-shadow:0 8px 32px rgba(99,102,241,0.12); transform:translateY(-2px); }
+        .proj-card:hover::before { opacity:1; }
+        .dark .proj-card { background:rgba(255,255,255,0.02); border-color:rgba(255,255,255,0.06); }
+        .dark .proj-card:hover { border-color:rgba(99,102,241,0.4); box-shadow:0 8px 32px rgba(99,102,241,0.2); }
+        .skill-card { border-radius:10px; border:1px solid rgba(148,163,184,0.12); padding:16px; background:rgba(148,163,184,0.02); transition:border-color 0.2s; }
+        .skill-card:hover { border-color:rgba(99,102,241,0.2); }
+        .dark .skill-card { background:rgba(255,255,255,0.02); border-color:rgba(255,255,255,0.05); }
+        .feat-chip {
+          display:inline-flex; align-items:center; gap:4px; padding:3px 9px;
+          border-radius:20px; font-size:11px; font-weight:500;
+          background:rgba(99,102,241,0.08); color:#6366f1; border:1px solid rgba(99,102,241,0.15); transition:all 0.15s;
+        }
+        .feat-chip:hover { background:rgba(99,102,241,0.15); border-color:rgba(99,102,241,0.3); }
+        .dark .feat-chip { background:rgba(99,102,241,0.12); color:#a5b4fc; border-color:rgba(99,102,241,0.2); }
+        .entry-card { padding:16px; border-radius:12px; border:1px solid rgba(148,163,184,0.12); background:rgba(148,163,184,0.025); transition:border-color 0.2s, background 0.2s; }
+        .entry-card:hover { border-color:rgba(99,102,241,0.2); background:rgba(99,102,241,0.02); }
+        .dark .entry-card { background:rgba(255,255,255,0.015); border-color:rgba(255,255,255,0.05); }
+        .dark .entry-card:hover { border-color:rgba(99,102,241,0.3); background:rgba(99,102,241,0.05); }
+      `}} />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 screen-resume">
         <div className="glass-card border border-slate-200 dark:border-white/5 p-8 md:p-12 shadow-2xl resume-container text-slate-800 dark:text-gray-200 mt-6">
@@ -562,20 +630,18 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Education ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Education
-            </h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Education</h2>
+            <div className="space-y-3">
               {education?.map((edu, idx) => (
-                <div key={idx} className="flex justify-between items-start gap-4">
+                <div key={idx} className="entry-card flex justify-between items-start gap-4">
                   <div>
                     <h3 className="text-base font-bold text-slate-900 dark:text-white">{edu.institution}</h3>
-                    <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold">{edu.degree}</p>
-                    <p className="text-xs text-slate-600 dark:text-gray-400 mt-1 font-medium">{edu.details}</p>
+                    <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{edu.degree}</p>
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-1 font-medium">{edu.details}</p>
                   </div>
                   <div className="text-right text-xs flex-shrink-0">
-                    <span className="font-bold text-slate-700 dark:text-gray-300 block">{edu.period}</span>
-                    <span className="font-semibold text-brand-indigo dark:text-brand-purple">{edu.score}</span>
+                    <span className="font-bold text-slate-600 dark:text-gray-300 block">{edu.period}</span>
+                    <span className="font-bold text-brand-indigo dark:text-brand-cyan mt-1 block">{edu.score}</span>
                   </div>
                 </div>
               ))}
@@ -584,24 +650,24 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Internships ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Internships
-            </h2>
-            <div className="space-y-6">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Internships</h2>
+            <div className="space-y-4">
               {internships?.map((intern, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between items-start gap-4 mb-2">
+                <div key={idx} className="entry-card">
+                  <div className="flex justify-between items-start gap-4 mb-3">
                     <div>
                       <h3 className="text-base font-bold text-slate-900 dark:text-white">{intern.role}</h3>
-                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold">{intern.company}</p>
+                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{intern.company}</p>
                     </div>
-                    <div className="text-right text-xs text-slate-600 dark:text-gray-300 font-bold flex-shrink-0">
-                      <span>{intern.year} ({intern.duration})</span>
-                    </div>
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-brand-indigo/10 dark:bg-brand-indigo/20 text-brand-indigo dark:text-brand-cyan flex-shrink-0">
+                      {intern.year} · {intern.duration}
+                    </span>
                   </div>
-                  <ul className="list-disc pl-5 space-y-1">
+                  <ul className="space-y-1.5">
                     {intern.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed font-medium">{bullet}</li>
+                      <li key={bIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-gray-400 leading-relaxed font-medium">
+                        <span className="text-brand-indigo dark:text-brand-cyan mt-0.5 flex-shrink-0">▸</span>{bullet}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -611,31 +677,33 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Projects ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Projects
-            </h2>
-            <div className="space-y-6">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Projects</h2>
+            <div className="space-y-4">
               {projects?.map((proj, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between items-start gap-4 mb-1">
+                <div key={idx} className="proj-card">
+                  <div className="flex justify-between items-start gap-4 mb-2 relative z-10">
                     <div>
                       <h3 className="text-base font-bold text-slate-900 dark:text-white">{proj.title}</h3>
-                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold">{proj.tagline}</p>
+                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{proj.tagline}</p>
                     </div>
-                    <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-xs text-brand-indigo dark:text-brand-purple hover:underline flex items-center gap-1.5 font-bold">
-                      GitHub <FaExternalLinkAlt className="text-[10px]" />
+                    <a href={proj.github} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-800 dark:bg-white/10 text-white hover:bg-brand-indigo dark:hover:bg-brand-indigo transition-colors flex-shrink-0 relative z-10">
+                      <FaGithub /> GitHub
                     </a>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed mb-2 font-medium">{proj.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-2">
+                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed mb-3 font-medium relative z-10">{proj.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-3 relative z-10">
                     {proj.features.map((feat, fIdx) => (
-                      <span key={fIdx} className="text-[10px] bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 px-2 py-0.5 rounded text-slate-600 dark:text-gray-400">
-                        • {feat}
-                      </span>
+                      <span key={fIdx} className="feat-chip">• {feat}</span>
                     ))}
                   </div>
-                  <div className="text-[10px] text-slate-500 dark:text-gray-500 font-semibold uppercase tracking-wider">
-                    Technologies: {proj.tech.join(", ")}
+                  <div className="flex flex-wrap gap-1.5 relative z-10">
+                    {proj.tech.map((t, tIdx) => (
+                      <span key={tIdx} className="tech-chip">
+                        <span className="tc-dot" style={{background: getTechColor(t)}} />
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -644,55 +712,62 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Achievements ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Achievements
-            </h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Achievements</h2>
+            <div className="space-y-3">
               {achievements?.map((ach, idx) => (
-                <div key={idx} className="flex justify-between items-start gap-4">
+                <div key={idx} className="entry-card flex justify-between items-start gap-4">
                   <div>
                     <h3 className="text-base font-bold text-slate-900 dark:text-white">{ach.title}</h3>
                     <p className="text-xs text-slate-600 dark:text-gray-400 mt-1 font-medium">{ach.description}</p>
                   </div>
-                  <div className="text-right text-xs flex-shrink-0">
-                    <span className="font-bold text-slate-700 dark:text-gray-300 block">{ach.year}</span>
+                  <span className="font-bold text-brand-indigo dark:text-brand-cyan text-xs flex-shrink-0">{ach.year}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Screen Skills (icon chips) ── */}
+          <div className="mb-8">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Skills</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { label: "Programming Languages", items: skills?.programming },
+                { label: "Web & Frontend",         items: skills?.frontend },
+                { label: "Backend & Frameworks",   items: skills?.backend },
+                { label: "Databases",              items: skills?.database },
+                { label: "Tools & Platforms",      items: skills?.tools },
+                { label: "Deployment",             items: skills?.deployment },
+              ].map(({ label, items }) => (
+                <div key={label} className="skill-card">
+                  <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2.5">{label}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items?.map((s) => (
+                      <span key={s.name} className="tech-chip">
+                        <span className="tc-dot" style={{background: getTechColor(s.name)}} />
+                        {s.name}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ── Screen Skills ── */}
-          <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Skills
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-600 dark:text-gray-400 font-medium">
-              <div><strong className="text-slate-800 dark:text-white">Programming Languages:</strong> {skills?.programming.map(s => s.name).join(", ")}</div>
-              <div><strong className="text-slate-800 dark:text-white">Web & Frontend:</strong> {skills?.frontend.map(s => s.name).join(", ")}</div>
-              <div><strong className="text-slate-800 dark:text-white">Backend & Frameworks:</strong> {skills?.backend.map(s => s.name).join(", ")}</div>
-              <div><strong className="text-slate-800 dark:text-white">Databases:</strong> {skills?.database.map(s => s.name).join(", ")}</div>
-              <div><strong className="text-slate-800 dark:text-white">Tools & Platforms:</strong> {skills?.tools.map(s => s.name).join(", ")}</div>
-              <div><strong className="text-slate-800 dark:text-white">Deployment:</strong> {skills?.deployment.map(s => s.name).join(", ")}</div>
-            </div>
-          </div>
-
           {/* ── Screen Coding Profiles ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Coding Profiles
-            </h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Coding Profiles</h2>
+            <div className="space-y-3">
               {codingProfiles?.map((plat, idx) => (
-                <div key={idx} className="flex justify-between items-center gap-4">
+                <div key={idx} className="entry-card flex justify-between items-center gap-4">
                   <div>
                     <h3 className="text-base font-bold text-slate-900 dark:text-white">{plat.platform}</h3>
-                    <p className="text-xs text-slate-600 dark:text-gray-400 mt-1 font-medium">
-                      Solved {plat.solved} | {plat.rating} | {plat.globalRank}
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5 font-medium">
+                      {plat.solved} Solved &nbsp;·&nbsp; {plat.rating} &nbsp;·&nbsp; {plat.globalRank}
                     </p>
                   </div>
-                  <a href={plat.profileUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-brand-indigo dark:text-brand-cyan hover:underline font-bold flex items-center gap-1">
-                    Profile <FaExternalLinkAlt className="text-[10px]" />
+                  <a href={plat.profileUrl} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-brand-indigo/30 text-brand-indigo dark:text-brand-cyan hover:bg-brand-indigo hover:text-white dark:hover:bg-brand-indigo transition-colors flex-shrink-0">
+                    Profile <FaExternalLinkAlt className="text-[9px]" />
                   </a>
                 </div>
               ))}
@@ -701,27 +776,19 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Certifications ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">
-              Certifications
-            </h2>
-            <div className="space-y-3">
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Certifications</h2>
+            <div className="space-y-2">
               {certifications?.map((cert, idx) => (
-                <div key={idx} className="grid grid-cols-3 gap-4 items-center text-xs">
-                  <div className="text-left">
-                    <strong className="text-slate-800 dark:text-white font-bold">{cert.title}</strong>
-                  </div>
-                  <div className="text-left">
-                    <a
-                      href={cert.provider.toLowerCase().includes("udemy") ? "https://www.udemy.com" : cert.provider.toLowerCase().includes("hackerrank") ? "https://www.hackerrank.com" : "https://www.cambridgeenglish.org/exams-and-tests/linguaskill/"}
-                      target="_blank" rel="noopener noreferrer"
-                      className="text-brand-indigo dark:text-brand-cyan hover:underline font-bold"
-                    >
-                      {cert.provider}
-                    </a>
-                  </div>
-                  <div className="text-right">
-                    <span className="font-bold text-slate-700 dark:text-gray-300">{cert.year}</span>
-                  </div>
+                <div key={idx} className="entry-card grid grid-cols-[1fr_auto_auto] gap-4 items-center text-xs">
+                  <strong className="text-slate-800 dark:text-white font-semibold">{cert.title}</strong>
+                  <a
+                    href={cert.provider.toLowerCase().includes("udemy") ? "https://www.udemy.com" : cert.provider.toLowerCase().includes("hackerrank") ? "https://www.hackerrank.com" : "https://www.cambridgeenglish.org/exams-and-tests/linguaskill/"}
+                    target="_blank" rel="noopener noreferrer"
+                    className="text-brand-indigo dark:text-brand-cyan hover:underline font-semibold whitespace-nowrap"
+                  >
+                    {cert.provider}
+                  </a>
+                  <span className="font-bold text-slate-500 dark:text-gray-400 text-right whitespace-nowrap">{cert.year}</span>
                 </div>
               ))}
             </div>
@@ -731,4 +798,20 @@ export default function Resume({ personal, education, internships, projects, ski
       </div>
     </div>
   );
+}
+
+/* ── Tech color dot helper (screen-only, not used in PDF) ── */
+function getTechColor(name) {
+  const c = {
+    "Java":"#f89820","C":"#555591","Python":"#3776ab","JavaScript":"#f7df1e",
+    "HTML":"#e34f26","CSS":"#1572b6","React":"#61dafb","React.js":"#61dafb",
+    "Tailwind":"#06b6d4","Tailwind CSS":"#06b6d4","Bootstrap":"#7952b3",
+    "Node":"#339933","Node.js":"#339933","Express":"#4a4a4a","Express.js":"#4a4a4a",
+    "Spring Boot":"#6db33f","MongoDB":"#47a248","MySQL":"#4479a1",
+    "Git":"#f05032","GitHub":"#6e40c9","VS Code":"#007acc","Postman":"#ff6c37",
+    "Canva":"#00c4cc","Vite":"#646cff","Render":"#46e3b7","Vercel":"#888888",
+    "Railway":"#555555","Recharts":"#8884d8","JWT":"#d63aff",
+    "Google OAuth":"#4285f4","Razorpay":"#072654","Brevo SMTP":"#0092ff",
+  };
+  return c[name] || "#6b7280";
 }

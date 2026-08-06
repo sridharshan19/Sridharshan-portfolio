@@ -6,6 +6,19 @@ import { SiSpringboot, SiMongodb, SiMysql, SiHibernate, SiExpress } from "react-
 import HeroSection from "../components/HeroSection";
 import CountUp from "react-countup";
 
+const TERMINAL_LOG_QUEUE = [
+  "Initializing local developer workspace...",
+  "Querying REST API from server port 5000...",
+  "Backend endpoints loaded: /api/portfolio",
+  "Connecting portfolio data source...",
+  "Fetching LeetCode solves: 300+ records fetched.",
+  "Fetching SkillRack solver status: Gold badge level.",
+  "Injecting animated glowing backdrop layers...",
+  "Vite bundler: 1084 modules compiled successfully.",
+  "-------------------------------------------------------",
+  "✓ Sridharshan's Portfolio Online. Welcome, Visitor!"
+];
+
 // Real-time Mock Compiler Terminal Console Widget
 function TerminalCard() {
   const [logs, setLogs] = useState([]);
@@ -91,7 +104,7 @@ function ProblemSolvingChart() {
   );
 }
 
-export default function Home({ personal, statistics, codingProfiles }) {
+export default function Home({ personal }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {

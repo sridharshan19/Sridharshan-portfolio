@@ -88,7 +88,7 @@ function App() {
               <Route path="/" element={<Home personal={data.personal} statistics={data.statistics} codingProfiles={data.codingProfiles} />} />
               <Route path="/about" element={<About personal={data.personal} statistics={data.statistics} education={data.education} internships={data.internships} />} />
               <Route path="/projects" element={<Projects projects={data.projects} />} />
-              <Route path="/resume" element={<Resume personal={data.personal} education={data.education} internships={data.internships} projects={data.projects} skills={data.skills} certifications={data.certifications} />} />
+              <Route path="/resume" element={<Resume personal={data.personal} education={data.education} internships={data.internships} projects={data.projects} skills={data.skills} certifications={data.certifications} achievements={data.achievements} codingProfiles={data.codingProfiles} />} />
               <Route path="/contact" element={<Contact personal={data.personal} />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
