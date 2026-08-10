@@ -4,12 +4,18 @@ import CountUp from "react-countup";
 import { FaAward, FaCode, FaLaptopCode, FaSeedling } from "react-icons/fa";
 import SriImage from "../assets/Sri.png";
 
-export default function AboutSection({ personal }) {
+export default function AboutSection({ personal, statistics }) {
+  const parseNum = (str, fallback) => {
+    if (!str) return fallback;
+    const num = parseInt(String(str).replace(/\D/g, ""), 10);
+    return isNaN(num) ? fallback : num;
+  };
+
   const statsData = [
-    { value: 300, suffix: "+", label: "LeetCode problems", icon: <FaCode /> },
-    { value: 400, suffix: "+", label: "SkillRack problems", icon: <FaLaptopCode /> },
-    { value: 2, suffix: "+", label: "Hackathon awards", icon: <FaAward /> },
-    { value: 4, suffix: "+", label: "Featured projects", icon: <FaSeedling /> }
+    { value: parseNum(statistics?.leetcodeSolved, 300), suffix: "+", label: "LeetCode problems", icon: <FaCode /> },
+    { value: parseNum(statistics?.skillrackSolved, 400), suffix: "+", label: "SkillRack problems", icon: <FaLaptopCode /> },
+    { value: parseNum(statistics?.hackathonsWon, 2), suffix: "+", label: "Hackathon awards", icon: <FaAward /> },
+    { value: parseNum(statistics?.projectsCompleted, 6), suffix: "+", label: "Featured projects", icon: <FaSeedling /> }
   ];
 
   return (

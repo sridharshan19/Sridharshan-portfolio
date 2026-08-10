@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaJava, FaJs, FaReact, FaNodeJs, FaBootstrap, FaHtml5, FaCss3Alt, FaChartLine, FaCreditCard } from "react-icons/fa";
-import { SiSpringboot, SiMongodb, SiMysql, SiExpress, SiTailwindcss, SiVite } from "react-icons/si";
+import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaJava, FaJs, FaReact, FaNodeJs, FaBootstrap, FaHtml5, FaCss3Alt, FaChartLine, FaCreditCard, FaLock, FaRobot, FaSms } from "react-icons/fa";
+import { SiSpringboot, SiMongodb, SiMysql, SiExpress, SiTailwindcss, SiVite, SiFramer, SiDocker } from "react-icons/si";
 
 function getTechIcon(tech) {
   const t = tech.toLowerCase();
@@ -20,6 +20,11 @@ function getTechIcon(tech) {
   if (t.includes("css")) return <FaCss3Alt className="text-blue-500 text-xs" />;
   if (t.includes("recharts")) return <FaChartLine className="text-blue-400 text-xs" />;
   if (t.includes("razorpay")) return <FaCreditCard className="text-blue-600 text-xs" />;
+  if (t.includes("framer")) return <SiFramer className="text-pink-500 text-xs" />;
+  if (t.includes("jwt") || t.includes("security")) return <FaLock className="text-amber-400 text-xs" />;
+  if (t.includes("ai") || t.includes("copilot")) return <FaRobot className="text-indigo-400 text-xs" />;
+  if (t.includes("docker")) return <SiDocker className="text-blue-400 text-xs" />;
+  if (t.includes("twilio") || t.includes("sms")) return <FaSms className="text-red-500 text-xs" />;
   return null;
 }
 

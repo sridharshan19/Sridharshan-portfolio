@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "start": "npm run dev",
     "client-install": "npm install --prefix client --legacy-peer-deps",
     "server-install": "npm install --prefix server",
     "install-all": "npm run client-install && npm run server-install",

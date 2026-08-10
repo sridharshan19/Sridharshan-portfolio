@@ -8,13 +8,15 @@ export default function Resume({ personal, education, internships, projects, ski
   const pdfDesc = {
     NatureCart:              "Built a role-based farm-to-consumer marketplace with inventory management, order tracking, analytics dashboards and PDF report generation.",
     TransTrack:              "Developed a fleet management system with driver tracking, trip/expense analytics, Brevo SMTP notifications and JWT-secured APIs.",
+    TrackNest:               "Built a subscription & expense SaaS with stateless JWT dual-token auth, automated Spring cron billing alerts via Twilio SMS & Email, and Docker deployment.",
     "NextGen Resume Builder":"Created a dynamic resume builder with live templates, auto-save, Google OAuth authentication and Razorpay premium payment integration.",
     LeaveMate:               "Built a leave management platform with employee request workflows, admin approval dashboards, real-time status updates and visual metrics.",
+    "WorkSphere HRMS":       "Enterprise-grade HR operations platform with 5-tier RBAC, shift attendance engine, automated payroll calculator, PDF payslips, asset vault, & AI HR Copilot.",
   };
 
-  /* Page 1 projects (indices 0-1), Page 2 projects (indices 2-3) */
+  /* Page 1 projects (indices 0-1), Page 2 projects (indices 2+) */
   const p1Projects = (projects || []).slice(0, 2);
-  const p2Projects = (projects || []).slice(2, 4);
+  const p2Projects = (projects || []).slice(2);
 
   const renderPdfProject = (proj) => (
     <article key={proj.title} className="pdf-entry pdf-proj">
@@ -279,8 +281,6 @@ export default function Resume({ personal, education, internships, projects, ski
             font-size: 9.5pt;
             color: #374151;
             line-height: 1.22;
-            white-space: nowrap;
-            overflow: hidden;
           }
           .pdf-tech strong { color: #111827; font-weight: 700; margin-right: 2px; }
 
@@ -801,17 +801,18 @@ export default function Resume({ personal, education, internships, projects, ski
 }
 
 /* ── Tech color dot helper (screen-only, not used in PDF) ── */
-function getTechColor(name) {
+function getTechColor(name = "") {
   const c = {
     "Java":"#f89820","C":"#555591","Python":"#3776ab","JavaScript":"#f7df1e",
-    "HTML":"#e34f26","CSS":"#1572b6","React":"#61dafb","React.js":"#61dafb",
+    "HTML":"#e34f26","CSS":"#1572b6","React":"#61dafb","React 19":"#61dafb","React.js":"#61dafb",
     "Tailwind":"#06b6d4","Tailwind CSS":"#06b6d4","Bootstrap":"#7952b3",
     "Node":"#339933","Node.js":"#339933","Express":"#4a4a4a","Express.js":"#4a4a4a",
-    "Spring Boot":"#6db33f","MongoDB":"#47a248","MySQL":"#4479a1",
+    "Spring Boot":"#6db33f","Spring Boot 3":"#6db33f","Spring Boot 3.3":"#6db33f","Spring Security":"#6db33f","MongoDB":"#47a248","MySQL":"#4479a1",
     "Git":"#f05032","GitHub":"#6e40c9","VS Code":"#007acc","Postman":"#ff6c37",
     "Canva":"#00c4cc","Vite":"#646cff","Render":"#46e3b7","Vercel":"#888888",
-    "Railway":"#555555","Recharts":"#8884d8","JWT":"#d63aff",
+    "Railway":"#555555","Recharts":"#8884d8","JWT":"#d63aff","JWT Security":"#d63aff",
     "Google OAuth":"#4285f4","Razorpay":"#072654","Brevo SMTP":"#0092ff",
+    "Docker":"#2496ed","Twilio SMS":"#f22f46","Framer Motion":"#e535ab"
   };
-  return c[name] || "#6b7280";
+  return c[name] || "#6366f1";
 }

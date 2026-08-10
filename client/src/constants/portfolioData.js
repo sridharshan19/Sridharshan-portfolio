@@ -17,7 +17,7 @@ export const fallbackPortfolioData = {
     "leetcodeSolved": "300+",
     "skillrackSolved": "400+",
     "hackathonsWon": "2+",
-    "projectsCompleted": "4+"
+    "projectsCompleted": "6+"
   },
   "skills": {
     "programming": [
@@ -106,46 +106,61 @@ export const fallbackPortfolioData = {
     {
       "title": "NatureCart",
       "tagline": "Farm-to-Consumer Marketplace",
-      "tech": ["React", "Node", "Express", "MongoDB", "Tailwind"],
+      "tech": ["React", "Node", "Express", "MongoDB", "Tailwind CSS"],
       "features": [
-        "Product Management",
-        "Authentication",
-        "Cart",
-        "Analytics",
-        "CSV/PDF Exports",
-        "Pickup Scheduling"
+        "Role-Based Product & Inventory Management",
+        "Farm-to-Consumer Pickup & Order Scheduling",
+        "Real-Time Sales & Revenue Analytics",
+        "Automated CSV & PDF Financial Reports",
+        "Secure User Authentication & Session Control"
       ],
       "description": "Full-stack farm-to-consumer marketplace with role-based access, inventory tracking, analytics, and PDF report generation.",
-      "github": "https://github.com/sridharshan19",
+      "github": "https://github.com/sridharshan19/NatureCart-Full-Stack-Farmers-Marketplace",
       "demo": "#",
       "icon": "🛒"
     },
     {
       "title": "TransTrack",
       "tagline": "Fleet & Transport Management System",
-      "tech": ["React", "Tailwind", "Spring Boot", "MySQL", "Recharts", "Brevo SMTP"],
+      "tech": ["React", "Tailwind CSS", "Spring Boot", "MySQL", "Recharts", "Brevo SMTP"],
       "features": [
-        "Fleet & Driver Tracking",
-        "Trip & Expense Analytics",
-        "Maintenance Reminders",
-        "CSV/PDF Reports",
-        "JWT Security"
+        "Fleet & Active Driver Real-Time Tracking",
+        "Trip & Expense Analytics Dashboards",
+        "Automated Maintenance & Alert Reminders",
+        "Brevo SMTP Automated Email Dispatch",
+        "Stateless JWT Security & Role Authorization"
       ],
       "description": "Fleet management tool integrating Brevo SMTP notifications, Recharts analytics dashboards, and JWT authentication.",
-      "github": "https://github.com/sridharshan19",
+      "github": "https://github.com/sridharshan19/TransTrack-Smart-Fleet-Logistics-Management-System-",
       "demo": "#",
       "icon": "🚛"
+    },
+    {
+      "title": "TrackNest",
+      "tagline": "Smart Subscription & Expense Manager",
+      "tech": ["React 19", "Spring Boot 3.3", "MongoDB", "Spring Security", "JWT", "Twilio SMS", "Docker", "Recharts"],
+      "features": [
+        "Stateless JWT Dual-Token Authentication",
+        "Automated Daily Cron Renewal Alerts (SMS & Email)",
+        "Financial Analytics & Recharts Spending Gauges",
+        "Category Spending Caps & Visual Progress Bars",
+        "Multi-Container Deployment (Docker Compose & Nginx)"
+      ],
+      "description": "Production-grade financial management platform designed to track recurring subscriptions, set budget thresholds, analyze spending habits with Recharts, and automate billing renewal alerts via Twilio SMS and Email.",
+      "github": "https://github.com/sridharshan19/TrackNest-Smart-Subscription-Expense-Manager.",
+      "demo": "#",
+      "icon": "💳"
     },
     {
       "title": "NextGen Resume Builder",
       "tagline": "Dynamic CV Creator",
       "tech": ["React", "Vite", "Spring Boot", "MySQL", "JWT", "Tailwind CSS", "Google OAuth", "Razorpay"],
       "features": [
-        "Interactive Templates",
-        "Auto-Save State",
-        "PDF Exports",
-        "Google OAuth Authentication",
-        "Razorpay Premium Integration"
+        "Interactive Responsive Resume Templates",
+        "Auto-Save State & Live Preview Engine",
+        "Google OAuth 2.0 Single Sign-On",
+        "Razorpay Premium Payment Integration",
+        "Instant High-Resolution PDF Exports"
       ],
       "description": "Dynamic resume creator with responsive templates, auto-save state, Google OAuth, and Razorpay payment integration.",
       "github": "https://github.com/sridharshan19",
@@ -157,15 +172,32 @@ export const fallbackPortfolioData = {
       "tagline": "Leave Management Application",
       "tech": ["React", "Node", "Express", "MongoDB", "Tailwind CSS"],
       "features": [
-        "Employee Applications",
-        "Admin Approvals Dashboard",
-        "Real-time Status Updates",
-        "Visual Metrics"
+        "Employee Leave Application & Request Tracking",
+        "Administrator Approval & Management Dashboard",
+        "Real-Time Request Status & Notification Flow",
+        "Visual Leave Metrics & Dynamic Balance Counters"
       ],
       "description": "Automated leave request management platform with real-time status tracking and administrator approval dashboards.",
       "github": "https://github.com/sridharshan19",
       "demo": "#",
       "icon": "📅"
+    },
+    {
+      "title": "WorkSphere HRMS",
+      "tagline": "Smart Workforce & HR Management Platform",
+      "tech": ["React 19", "Spring Boot 3", "MongoDB", "Tailwind CSS", "Framer Motion", "Recharts", "JWT Security"],
+      "features": [
+        "5-Tier Dynamic Role-Based Access Control (RBAC)",
+        "Automated Shift Attendance & Punctuality Engine",
+        "Monthly Payroll Calculation Engine & PDF Payslips",
+        "Hardware Asset Lifecycle & Employee Document Vault",
+        "Direct Employee Messaging & AI HR Copilot",
+        "Executive Analytics Dashboards & Recharts Visualizations"
+      ],
+      "description": "Enterprise-grade workforce intelligence and HR operations platform built with React 19, Spring Boot 3, and MongoDB. Unifies core HR workflows, automated shift tracking, monthly payroll processing, asset lifecycle management, real-time messaging, and an AI HR Copilot.",
+      "github": "https://github.com/sridharshan19/WorkSphere-Smart-Workforce-Human-Resource-Management-System-HRMS-",
+      "demo": "#",
+      "icon": "🏢"
     }
   ],
   "achievements": [
