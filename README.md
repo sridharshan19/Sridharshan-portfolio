@@ -1,38 +1,31 @@
 # 🚀 Sridharshan M N — Full Stack Developer Portfolio
 
-<div align="center">
+A modern, responsive, and interactive developer portfolio built to showcase my skills, projects, technical experience, competitive programming journey, and achievements.
 
-### **Java Full Stack Developer | Spring Boot | React | MERN**
+The portfolio focuses on **Java Full Stack Development, Spring Boot, React.js, MERN Stack, REST APIs, interactive UI design, animations, and scalable application architecture**.
 
-A modern, interactive, and performance-focused developer portfolio built to showcase my **full-stack development skills, projects, technical journey, competitive programming achievements, and professional experience**.
-
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live-00D4FF?style=for-the-badge\&logo=vercel\&logoColor=white)](#)
-[![GitHub](https://img.shields.io/badge/GitHub-sridharshan19-181717?style=for-the-badge\&logo=github)](https://github.com/sridharshan19)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sridharshan%20M%20N-0A66C2?style=for-the-badge\&logo=linkedin)](https://www.linkedin.com/in/sridharshanm-n-2564232b6)
-[![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=for-the-badge\&logo=openjdk\&logoColor=white)](#)
-[![React](https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)](#)
-
-</div>
+Designed with a combination of modern frontend technologies, immersive animations, interactive dashboards, and a clean developer-focused experience.
 
 ---
 
-## 👨‍💻 About the Project
+## 🌐 About the Portfolio
 
-This repository contains my personal **Full Stack Developer Portfolio**, designed as an interactive digital representation of my technical skills, projects, achievements, and development journey.
+This portfolio serves as a central platform to present my journey as a **Full Stack Developer** and final-year **Electrical and Electronics Engineering student**.
 
-Rather than using a traditional static portfolio layout, the application combines **modern UI design, animations, interactive dashboards, project case studies, responsive layouts, and performance-conscious visual effects**.
+It showcases:
 
-The portfolio focuses primarily on:
+* 💻 Full Stack Development skills
+* ☕ Java & Spring Boot development
+* ⚛️ React.js frontend development
+* 🌐 MERN Stack projects
+* 🔌 REST API development
+* 🗄️ MySQL & MongoDB experience
+* 🧩 Software architecture and problem solving
+* 🏆 Competitive programming achievements
+* 📚 Technical learning journey
+* 🚀 Projects and real-world applications
 
-* ☕ Java Full Stack Development
-* 🍃 Spring Boot & REST APIs
-* ⚛️ React.js Development
-* 🟢 MERN Stack Applications
-* 🗄️ MySQL & MongoDB
-* 🔐 Authentication & API Security
-* 🎨 Interactive UI/UX
-* 📊 Data visualization
-* 🚀 Scalable application architecture
+The interface is designed to provide an engaging experience while maintaining performance, responsiveness, and usability.
 
 ---
 
@@ -40,23 +33,28 @@ The portfolio focuses primarily on:
 
 ## 🎨 Interactive Bento Dashboard
 
-A modern **Bento Grid-inspired dashboard** that presents technical information through interactive widgets.
+A modern Bento-style dashboard presenting important developer statistics and technical highlights.
 
 Features include:
 
-* Animated statistics counters
+* Animated metric cards
+* Developer statistics
 * Technology badges
-* Developer metrics
-* SVG performance/trajectory graphs
-* Simulated compiler terminal
-* Interactive dashboard cards
-* Responsive Bento Grid layout
+* SVG performance graphs
+* Animated counters
+* Terminal-style compiler output
+* Interactive visual elements
 
 ---
 
 ## 🔍 Project Search & Filtering
 
-The project showcase provides an interactive way to explore my work.
+Projects can be explored using:
+
+* Category-based filtering
+* Live keyword search
+* Technology-based filtering
+* Interactive project cards
 
 ### Supported Categories
 
@@ -67,112 +65,104 @@ MERN Stack
 SaaS
 ```
 
-Users can:
-
-* Filter projects by technology/category
-* Search projects using keywords
-* View project details without leaving the page
-* Explore technical implementation details
-* Access GitHub repositories
-* Access live demonstrations where available
+This makes it easier to quickly explore projects based on their technology or application type.
 
 ---
 
 ## 🖼️ Interactive Project Case Studies
 
-Each project can be opened through an interactive modal/drawer containing:
+Each project provides a detailed case-study experience through an interactive modal/drawer.
+
+Project information includes:
 
 * Project overview
 * Problem statement
-* Technical approach
+* Technical implementation
 * Key features
-* Technologies used
-* Backend/frontend architecture
+* Technology stack
+* Development highlights
 * GitHub repository
 * Live demo
-* Technical highlights
-
-This provides more context than a traditional project card.
 
 ---
 
 ## 📖 Developer Stories & Blog
 
-A dedicated `/blog` route is included for publishing technical and professional experiences.
+A dedicated `/blog` route provides detailed technical and personal development stories.
 
-Potential content includes:
+Topics include:
 
 * Internship experiences
 * Competitive programming journey
 * Hackathon experiences
-* Development lessons
-* Project development stories
-* Technical problem-solving experiences
+* Project development
+* Technical learning
+* Software development journey
 
 ---
 
 ## 📄 ATS-Friendly Resume
 
-The portfolio includes a dedicated resume experience with a **print-optimized two-page ATS resume layout**.
+The portfolio includes a dedicated resume section with a print-optimized layout.
 
-The custom print system provides:
+### Features
 
-* Clean typography
 * ATS-friendly structure
-* Print-specific CSS
-* Two-page resume formatting
-* Browser-based PDF generation
-* Minimal visual distractions
-* Recruiter-friendly content hierarchy
+* Two-page resume format
+* Clean typography
+* Print-specific styling
+* PDF-friendly formatting
+* One-click browser printing/export
+
+The resume can be exported using the browser's **Print → Save as PDF** functionality.
 
 ---
 
-## 🌌 Orbital Particle Network
+## 🌌 Aurora & Orbital Particle Network
 
-A custom HTML5 Canvas animation creates an interactive **orbital particle/constellation network**.
+A custom HTML5 Canvas animation creates an interactive particle network.
 
-The animation includes:
+The visual system includes:
 
-* Dynamic particles
-* Orbital movement
-* Connecting network lines
+* Orbital particle movement
+* Connected particle nodes
 * Smooth animation
-* Responsive canvas rendering
-* Lightweight custom physics
+* Radial gradients
+* Grid overlays
+* Dynamic canvas rendering
 
-The effect is designed to enhance the visual experience without becoming the primary focus of the page.
+The animation adds visual depth without interfering with the main content.
 
 ---
 
 ## 🧊 Three.js 3D Background
 
-The portfolio uses **Three.js** and React Three Fiber to render subtle floating 3D wireframe objects.
+The portfolio uses Three.js to create subtle floating 3D wireframe objects.
 
-The 3D layer provides:
+Implemented using:
 
-* Depth
-* Motion
-* Visual hierarchy
-* Modern developer aesthetic
-* Background visual interest
+* Three.js
+* React Three Fiber
+* 3D geometries
+* Lightweight animation
 
-Performance is prioritized so that the 3D experience does not interfere with the main content.
+The 3D layer is designed as a background visual rather than distracting from the portfolio content.
 
 ---
 
 ## 🖱️ Custom Spring Cursor
 
-A custom cursor interaction provides additional feedback across interactive elements.
+A custom animated cursor provides additional interaction feedback.
 
-The cursor responds to:
+The cursor responds to interactive elements such as:
 
 * Buttons
 * Links
 * Cards
-* Hoverable elements
-* Interactive project components
+* Navigation elements
+* Project interactions
 
-Smooth spring-based movement creates a more responsive interaction model.
+Animations use spring-based motion to provide a smooth and natural feel.
 
 ---
 
@@ -183,81 +173,67 @@ The portfolio supports both:
 * 🌙 Dark Mode
 * ☀️ Light Mode
 
-Theme preferences are persisted locally so the selected theme can be maintained between sessions.
+Theme preferences are persisted so the selected theme remains available between sessions.
 
 ---
 
-# 🛠️ Tech Stack
+# 🛠️ Technology Stack
 
-## Frontend
-
-| Technology        | Purpose                                    |
-| ----------------- | ------------------------------------------ |
-| **React.js**      | Component-based UI development             |
-| **Vite**          | Frontend build tool and development server |
-| **Tailwind CSS**  | Utility-first styling                      |
-| **Framer Motion** | UI animations and transitions              |
-| **Swiper**        | Interactive sliders/carousels              |
-| **React CountUp** | Animated statistics                        |
-| **HTML5**         | Application structure                      |
-| **CSS3**          | Styling and responsive design              |
-
----
-
-## Backend
-
-| Technology     | Purpose                              |
-| -------------- | ------------------------------------ |
-| **Node.js**    | JavaScript runtime                   |
-| **Express.js** | REST API server                      |
-| **JSON**       | Portfolio data storage/API responses |
-
-The portfolio also demonstrates experience with **Spring Boot 3** through my broader Java full-stack development work.
+| Category              | Technologies                              |
+| --------------------- | ----------------------------------------- |
+| **Languages**         | Java, JavaScript ES6+, C                  |
+| **Frontend**          | React.js, Vite, Tailwind CSS, HTML5, CSS3 |
+| **UI & Animation**    | Framer Motion, Swiper, Lenis Scroll       |
+| **Backend**           | Node.js, Express.js, Spring Boot 3        |
+| **Databases**         | MongoDB, MySQL                            |
+| **3D & Graphics**     | Three.js, React Three Fiber, HTML5 Canvas |
+| **API & Testing**     | REST APIs, JSON, Postman                  |
+| **Development Tools** | Git, GitHub, VS Code, npm                 |
+| **Containerization**  | Docker                                    |
 
 ---
 
-## Database
+# 🏗️ Architecture
 
-| Technology  | Usage                                 |
-| ----------- | ------------------------------------- |
-| **MongoDB** | NoSQL application/database experience |
-| **MySQL**   | Relational database development       |
-
----
-
-## Animation & Visual Experience
-
-| Technology            | Purpose                        |
-| --------------------- | ------------------------------ |
-| **Three.js**          | 3D background objects          |
-| **React Three Fiber** | React integration for Three.js |
-| **HTML5 Canvas**      | Particle/orbital animation     |
-| **Framer Motion**     | UI motion                      |
-| **Lenis**             | Smooth scrolling               |
-
----
-
-## Development Tools
+The application follows a separated frontend and backend architecture.
 
 ```text
-Git
-GitHub
-VS Code
-Postman
-Docker
-npm
-Vite
+                    ┌───────────────────────┐
+                    │       Portfolio       │
+                    │       Website         │
+                    └───────────┬───────────┘
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │      React + Vite     │
+                    │      Frontend         │
+                    └───────────┬───────────┘
+                                │
+                         REST API Requests
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │   Node.js + Express   │
+                    │      Backend API      │
+                    └───────────┬───────────┘
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │      JSON Data        │
+                    │   Portfolio Content   │
+                    └───────────────────────┘
 ```
+
+The frontend can also operate independently using the local fallback dataset.
 
 ---
 
-# 🏗️ Project Architecture
+# 📂 Project Structure
 
 ```text
 portfolio/
 │
 ├── client/
-│   │
 │   ├── src/
 │   │   │
 │   │   ├── assets/
@@ -293,7 +269,6 @@ portfolio/
 │   └── package.json
 │
 ├── server/
-│   │
 │   ├── data/
 │   │   └── portfolioData.json
 │   │
@@ -309,67 +284,9 @@ portfolio/
 
 ---
 
-# 🔄 Application Flow
-
-```text
-                    ┌─────────────────────┐
-                    │      Visitor        │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   React Frontend    │
-                    │     Vite + React     │
-                    └──────────┬──────────┘
-                               │
-                ┌──────────────┴──────────────┐
-                │                             │
-                ▼                             ▼
-       ┌─────────────────┐          ┌──────────────────┐
-       │ Static Fallback │          │ Express REST API │
-       │ Portfolio Data  │          │     Server       │
-       └─────────────────┘          └────────┬─────────┘
-                                             │
-                                             ▼
-                                    ┌──────────────────┐
-                                    │ Portfolio JSON   │
-                                    │      Data        │
-                                    └──────────────────┘
-```
-
-The frontend is designed with a **fallback data strategy**.
-
-If the backend API is unavailable, the application can use local portfolio data from:
-
-```text
-client/src/constants/portfolioData.js
-```
-
-This makes the frontend more resilient and allows standalone deployment.
-
----
-
 # 🚀 Getting Started
 
-## Prerequisites
-
-Make sure the following are installed:
-
-* **Node.js**
-* **npm**
-* **Git**
-
-Check your installation:
-
-```bash
-node --version
-npm --version
-git --version
-```
-
----
-
-# 📥 Installation
+Follow the steps below to run the portfolio locally.
 
 ## 1. Clone the Repository
 
@@ -385,27 +302,27 @@ cd Sridharshan-portfolio
 
 ---
 
-# ⚡ Option A — Start Frontend & Backend Together
+# 📦 Installation
 
-Install dependencies:
+## Option 1 — Full Application
+
+Install dependencies for the complete project:
 
 ```bash
 npm run install-all
 ```
 
-Start the development environment:
+Then start the frontend and backend:
 
 ```bash
 npm run dev
 ```
 
-This starts both the frontend and backend concurrently.
-
 ---
 
-# 🎨 Option B — Run Frontend Only
+## Option 2 — Frontend Only
 
-Navigate to the client:
+Navigate to the client directory:
 
 ```bash
 cd client
@@ -417,13 +334,13 @@ Install dependencies:
 npm install
 ```
 
-Start Vite:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The frontend will normally be available at:
+The frontend will be available at:
 
 ```text
 http://localhost:5173
@@ -431,430 +348,261 @@ http://localhost:5173
 
 ---
 
-# 🖥️ Backend Setup
+# 🖥️ Local Development
 
-Navigate to the server:
+| Service     | URL                     |
+| ----------- | ----------------------- |
+| Frontend    | `http://localhost:5173` |
+| Backend API | `http://localhost:5005` |
 
-```bash
-cd server
-```
+---
 
-Install dependencies:
+# 🔄 Backend Fallback System
 
-```bash
-npm install
-```
+The portfolio is designed to remain functional even when the backend server is unavailable.
 
-Start the Express server:
+The frontend first attempts to retrieve portfolio information through the backend API.
 
-```bash
-npm start
-```
-
-The backend API runs on:
+If the API is unavailable, it automatically uses:
 
 ```text
-http://localhost:5005
+src/constants/portfolioData.js
 ```
 
+This provides a reliable fallback mechanism for standalone deployments.
+
+### Benefits
+
+* No backend dependency for basic portfolio rendering
+* Works with static hosting
+* Easier deployment
+* Improved reliability
+* Suitable for GitHub Pages, Vercel, and Netlify
+
 ---
 
-# 🌐 Local Development
+# 📊 Developer Highlights
 
-| Service     | URL                          |
-| ----------- | ---------------------------- |
-| Frontend    | `http://localhost:5173`      |
-| Backend API | `http://localhost:5005`      |
-| Blog        | `http://localhost:5173/blog` |
+The portfolio presents key development metrics and achievements.
+
+### Competitive Programming
+
+* 🟢 **LeetCode:** 300+ Problems
+* 🔵 **SkillRack:** 400+ Problems
+
+The competitive programming section demonstrates consistency in:
+
+* Data Structures
+* Algorithms
+* Problem Solving
+* Logical Thinking
+* Coding Practice
 
 ---
 
-# 🔌 API Architecture
+# 💻 Featured Technical Areas
 
-The Express backend exposes REST endpoints used by the React frontend.
+The portfolio highlights experience across multiple areas of software development.
 
-Example architecture:
+### Java Full Stack
 
 ```text
-React UI
-   │
-   │ HTTP Request
-   ▼
-Express Router
-   │
-   ▼
-Controller / Route Handler
-   │
-   ▼
-portfolioData.json
-   │
-   ▼
-JSON Response
-   │
-   ▼
-React UI
+Java
+Spring Boot
+Spring Data JPA
+Spring Security
+REST APIs
+MySQL
+JWT
+Hibernate
 ```
 
-The API layer keeps portfolio data separate from the presentation layer and provides a foundation for future database integration.
+### MERN Stack
 
----
+```text
+MongoDB
+Express.js
+React.js
+Node.js
+REST APIs
+```
 
-# 🛡️ Fallback Data Strategy
-
-One of the portfolio's important design decisions is the ability to operate without the backend.
-
-### API Available
+### Frontend Development
 
 ```text
 React
-  ↓
-Express API
-  ↓
-Portfolio Data
+Vite
+JavaScript
+HTML5
+CSS3
+Tailwind CSS
+Framer Motion
 ```
 
-### API Unavailable
+### Development & API Tools
 
 ```text
-React
-  ↓
-Local portfolioData.js
+Git
+GitHub
+Postman
+Docker
+VS Code
+npm
 ```
 
-This means the portfolio can still display its core content during backend downtime.
+---
 
-It also makes frontend-only deployments possible.
+# ⚡ Performance & UX
+
+Performance and user experience were considered throughout the development process.
+
+### Performance considerations
+
+* Component-based React architecture
+* Reusable UI components
+* Lightweight animation systems
+* Conditional rendering
+* Backend fallback support
+* Optimized visual effects
+* Responsive layouts
+
+### UX considerations
+
+* Responsive design
+* Smooth scrolling
+* Interactive navigation
+* Clear project categorization
+* Search functionality
+* Dark/light theme
+* Accessible content structure
+* Mobile-friendly layouts
 
 ---
 
 # 📱 Responsive Design
 
-The portfolio is designed to work across:
-
-* 🖥️ Desktop
-* 💻 Laptop
-* 📱 Mobile
-* 📟 Tablet
-
-Responsive layouts are applied to:
-
-* Navigation
-* Hero section
-* Bento dashboard
-* Project cards
-* Project modal
-* Blog
-* Resume
-* Contact section
-* 3D/Canvas backgrounds
-
----
-
-# ⚡ Performance Considerations
-
-The portfolio uses several techniques to keep the experience responsive:
-
-* Vite for fast development and optimized builds
-* Component-based React architecture
-* Lazy rendering where appropriate
-* Lightweight Canvas animation
-* Controlled Three.js rendering
-* Responsive asset handling
-* Local fallback data
-* Minimal API dependency for core portfolio content
-* CSS media queries for print optimization
-
-The visual effects are treated as **progressive enhancements**, rather than dependencies for accessing the main content.
-
----
-
-# 📊 Developer Statistics
-
-### Competitive Programming
-
-| Platform      |      Progress |
-| ------------- | ------------: |
-| **LeetCode**  | 300+ Problems |
-| **SkillRack** | 400+ Problems |
-
-These platforms are part of my continuous effort to improve:
-
-* Data structures
-* Algorithms
-* Problem solving
-* Java programming
-* Logical thinking
-* Competitive coding
-
----
-
-# 💼 Featured Technical Areas
-
-## ☕ Java Full Stack
-
-Experience and projects involving:
+The portfolio is designed to work across different screen sizes.
 
 ```text
-Java
-Spring Boot
-Spring Data JPA
-Spring Security
-JWT
-Hibernate
-REST APIs
-MySQL
-Maven
-```
-
----
-
-## ⚛️ React Development
-
-Experience with:
-
-```text
-React.js
-Vite
-React Router
-Axios
-Component Architecture
-REST API Integration
-Responsive UI
-State Management
-Animations
-```
-
----
-
-## 🟢 MERN Stack
-
-```text
-MongoDB
-Express.js
-React.js
-Node.js
-```
-
-Including experience with:
-
-* REST APIs
-* Authentication
-* Role-based authorization
-* Product management
-* Shopping cart functionality
-* Payment integration
-* Dashboard interfaces
-
----
-
-# 📂 Featured Projects
-
-Some of my development work includes:
-
-### 🔔 Recurring Payment Alert Application
-
-A full-stack application designed to help users track recurring payments and receive alerts before subscription payments are due.
-
-**Technologies:**
-
-```text
-Java
-Spring Boot
-Spring Security
-JWT
-JPA / Hibernate
-MySQL
-React
-Vite
-Axios
-```
-
----
-
-### 🛒 NatureCart
-
-A MERN-based marketplace application supporting multiple user roles and online payments.
-
-**Technologies:**
-
-```text
-MongoDB
-Express.js
-React
-Node.js
-Razorpay
-JWT
-REST API
-```
-
----
-
-### 📄 Resume Builder API
-
-A Spring Boot backend application designed to manage resume-related data through REST APIs.
-
-**Technologies:**
-
-```text
-Java
-Spring Boot
-MongoDB
-REST API
-Maven
-```
-
----
-
-### 🎓 Course Management System
-
-A full-stack course management application built using Spring Boot, React, and MySQL.
-
-**Technologies:**
-
-```text
-Java
-Spring Boot
-React
-MySQL
-Spring Data JPA
-REST API
-```
-
----
-
-# 🧪 Testing & API Development
-
-API development and testing are performed using tools such as:
-
-* Postman
-* REST clients
-* Browser developer tools
-* Git/GitHub
-* Application logs
-
-Typical API workflow:
-
-```text
-Request
+Desktop
    ↓
-Endpoint
+Laptop
    ↓
-Controller
+Tablet
    ↓
-Service
-   ↓
-Database / Data Source
-   ↓
-Response
+Mobile
 ```
+
+Layouts, project cards, navigation, animations, and typography adapt according to the available screen size.
+
+---
+
+# 🔌 API Structure
+
+The Express backend exposes portfolio information through REST endpoints.
+
+Example structure:
+
+```text
+GET /api/projects
+GET /api/skills
+GET /api/experience
+GET /api/education
+GET /api/achievements
+```
+
+The frontend consumes these endpoints through reusable service functions.
 
 ---
 
 # 📬 Contact
 
-I'm open to opportunities involving:
+If you'd like to connect, collaborate, or discuss a project:
 
-* Full Stack Development
-* Java Development
-* Spring Boot Development
-* React Development
-* Backend Development
-* Software Engineering Internships
-* Graduate Software Engineering Roles
+**Email:** [sridharshans556@gmail.com](mailto:sridharshans556@gmail.com)
 
-### 📧 Email
+**GitHub:** github.com/sridharshan19
 
-**[sridharshans556@gmail.com](mailto:sridharshans556@gmail.com)**
-
-### 🐙 GitHub
-
-**https://github.com/sridharshan19**
-
-### 💼 LinkedIn
-
-**https://www.linkedin.com/in/sridharshan-m-n-2564232b6**
+**LinkedIn:** linkedin.com/in/sridharshanm-n-2564232b6
 
 ---
 
-# 🌐 Portfolio
+# 🎯 Future Improvements
 
-Visit the live portfolio to explore the complete interactive experience:
+Planned improvements include:
 
-```text
-Coming Soon / Add your deployed portfolio URL here
-```
-
----
-
-# 🔮 Future Improvements
-
-Planned enhancements include:
-
-* [ ] Connect portfolio to a production database
 * [ ] Admin dashboard for portfolio content management
-* [ ] Blog CMS
+* [ ] Database-backed portfolio content
 * [ ] Advanced analytics dashboard
 * [ ] More interactive project case studies
-* [ ] Enhanced accessibility
-* [ ] SEO optimization
+* [ ] Improved accessibility
 * [ ] Progressive Web App support
 * [ ] Automated CI/CD deployment
-* [ ] Performance monitoring
-* [ ] Additional 3D interactive experiences
+* [ ] Additional developer tools
+* [ ] More technical blog articles
 
 ---
 
-# 🤝 Contributing
+# 📌 Project Goals
 
-This is primarily a personal portfolio project, but suggestions and constructive feedback are always welcome.
+The main goals of this portfolio are to:
 
-If you discover a bug or have an improvement idea:
+1. Showcase full-stack development capabilities.
+2. Demonstrate practical React and backend development.
+3. Present real-world projects in an interactive format.
+4. Provide recruiters with quick access to technical information.
+5. Demonstrate UI/UX and frontend animation skills.
+6. Highlight competitive programming consistency.
+7. Maintain a scalable and maintainable project architecture.
 
-1. Fork the repository
-2. Create a feature branch
+---
 
-```bash
-git checkout -b feature/your-feature
+# ⭐ Why This Portfolio?
+
+This is more than a traditional static portfolio.
+
+It combines:
+
+```text
+Modern UI
+   +
+Full Stack Development
+   +
+Interactive Animations
+   +
+3D Visuals
+   +
+REST APIs
+   +
+Responsive Design
+   +
+Technical Case Studies
 ```
 
-3. Commit your changes
-
-```bash
-git commit -m "Add your feature"
-```
-
-4. Push the branch
-
-```bash
-git push origin feature/your-feature
-```
-
-5. Open a Pull Request
+The goal is to create a portfolio that demonstrates not only **what I have learned**, but also **how I build, structure, and present software applications**.
 
 ---
 
-# 📜 License
+## 👨‍💻 About Me
 
-This project is intended for personal portfolio and educational purposes.
+I am **Sridharshan M N**, a final-year Electrical and Electronics Engineering student with a strong interest in software development and full-stack engineering.
 
-If you would like to reuse substantial parts of the design or implementation, please contact me first.
+My primary development interests include:
+
+* Java
+* Spring Boot
+* React.js
+* REST APIs
+* Full Stack Development
+* Problem Solving
+* Software Architecture
+
+I continuously work on projects and coding challenges to strengthen my development and problem-solving skills.
 
 ---
 
-# ⭐ Support
+## 📄 License
 
-If you found this project useful or interesting, consider giving the repository a ⭐ **Star**.
+This project is created for personal portfolio and educational purposes.
 
-It helps support the project and motivates me to continue building and learning.
-
----
-
-<div align="center">
-
-### 🚀 Built with passion, curiosity, and continuous learning.
-
-**Sridharshan M N**
-
-**Java Full Stack Developer | React | Spring Boot | MERN**
-
-</div>
+© 2026 Sridharshan M N. All rights reserved.
