@@ -28,7 +28,7 @@ function getTechIcon(tech) {
   return null;
 }
 
-export default function ProjectCard({ project, index }) {
+export default function ProjectCard({ project, index, onSelect }) {
   const cardRef = useRef(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -128,9 +128,13 @@ export default function ProjectCard({ project, index }) {
             </a>
           )}
         </div>
-        <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-indigo dark:text-brand-cyan">
+        <button
+          type="button"
+          onClick={() => onSelect && onSelect(project)}
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-indigo dark:text-brand-cyan hover:underline clickable"
+        >
           Case study <FaArrowRight className="text-[10px]" />
-        </span>
+        </button>
       </div>
     </motion.article>
   );

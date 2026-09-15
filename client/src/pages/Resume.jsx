@@ -519,20 +519,13 @@ export default function Resume({ personal, education, internships, projects, ski
           <section className="pdf-sec">
             <h2>Certifications</h2>
             <div className="pdf-cert-table">
-              {certifications?.map((cert) => {
-                const providerUrl = cert.provider.toLowerCase().includes("udemy")
-                  ? "https://www.udemy.com"
-                  : cert.provider.toLowerCase().includes("hackerrank")
-                  ? "https://www.hackerrank.com"
-                  : "https://www.cambridgeenglish.org/exams-and-tests/linguaskill/";
-                return (
-                  <div key={`${cert.title}-${cert.year}`} className="pdf-cert-row">
-                    <strong>{cert.title}</strong>
-                    <a href={providerUrl} target="_blank" rel="noopener noreferrer">{cert.provider}</a>
-                    <span className="pdf-cert-year">{cert.year}</span>
-                  </div>
-                );
-              })}
+              {certifications?.map((cert) => (
+                <div key={`${cert.title}-${cert.year}`} className="pdf-cert-row">
+                  <strong>{cert.title}</strong>
+                  <span>{cert.provider}</span>
+                  <span className="pdf-cert-year">{cert.year}</span>
+                </div>
+              ))}
             </div>
           </section>
         </div>
@@ -781,13 +774,9 @@ export default function Resume({ personal, education, internships, projects, ski
               {certifications?.map((cert, idx) => (
                 <div key={idx} className="entry-card grid grid-cols-[1fr_auto_auto] gap-4 items-center text-xs">
                   <strong className="text-slate-800 dark:text-white font-semibold">{cert.title}</strong>
-                  <a
-                    href={cert.provider.toLowerCase().includes("udemy") ? "https://www.udemy.com" : cert.provider.toLowerCase().includes("hackerrank") ? "https://www.hackerrank.com" : "https://www.cambridgeenglish.org/exams-and-tests/linguaskill/"}
-                    target="_blank" rel="noopener noreferrer"
-                    className="text-brand-indigo dark:text-brand-cyan hover:underline font-semibold whitespace-nowrap"
-                  >
+                  <span className="text-slate-600 dark:text-slate-300 font-semibold whitespace-nowrap">
                     {cert.provider}
-                  </a>
+                  </span>
                   <span className="font-bold text-slate-500 dark:text-gray-400 text-right whitespace-nowrap">{cert.year}</span>
                 </div>
               ))}

@@ -15,6 +15,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
 import { fetchPortfolioData } from "./services/portfolioService";
@@ -89,6 +90,7 @@ function App() {
               <Route path="/about" element={<About personal={data.personal} statistics={data.statistics} education={data.education} internships={data.internships} />} />
               <Route path="/projects" element={<Projects projects={data.projects} />} />
               <Route path="/resume" element={<Resume personal={data.personal} education={data.education} internships={data.internships} projects={data.projects} skills={data.skills} certifications={data.certifications} achievements={data.achievements} codingProfiles={data.codingProfiles} />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact personal={data.personal} />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

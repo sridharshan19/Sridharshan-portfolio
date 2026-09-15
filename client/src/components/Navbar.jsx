@@ -11,6 +11,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
     { to: "/about", label: "About" },
     { to: "/projects", label: "Projects" },
     { to: "/resume", label: "Resume" },
+    { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact" }
   ];
 
