@@ -56,12 +56,12 @@ export default function Resume({ personal, education, internships, projects, ski
         ══════════════════════════════════════════════ */
         @media print {
           @page {
-            size: A4;
-            margin: 14mm 15mm;
+            size: A4 portrait;
+            margin: 10mm 12mm;
           }
 
           /* Kill everything except pdf-resume */
-          body, html { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+          body, html { background: #fff !important; margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; }
           .screen-resume, .floating-print-btn,
           nav, footer, button,
           .custom-cursor-dot, .custom-cursor-outline,
@@ -73,11 +73,12 @@ export default function Resume({ personal, education, internships, projects, ski
           /* Show PDF layer */
           .pdf-resume {
             display: block !important;
-            font-family: 'Inter', Arial, sans-serif;
-            font-size: 10pt;
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            font-size: 9pt;
             color: #111827;
-            line-height: 1.3;
+            line-height: 1.28;
             background: #fff;
+            width: 100%;
           }
 
           /* ── Pages ── */
@@ -85,49 +86,49 @@ export default function Resume({ personal, education, internships, projects, ski
             width: 100%;
             background: #fff;
             color: #111827;
+            box-sizing: border-box;
           }
           .pdf-page-1 {
             page-break-after: always;
             break-after: page;
           }
           .pdf-page-2 {
-            page-break-after: auto;
-            break-after: auto;
+            page-break-after: avoid;
+            break-after: avoid;
           }
-          /* Page 1 — more breathing room to fill the page naturally */
+          /* Page 1 spacing */
           .pdf-page-1 .pdf-sec {
-            margin-bottom: 16px;
-          }
-          .pdf-page-1 .pdf-entry {
             margin-bottom: 11px;
           }
+          .pdf-page-1 .pdf-entry {
+            margin-bottom: 8px;
+          }
           .pdf-page-1 .pdf-proj {
-            margin-bottom: 12px;
+            margin-bottom: 9px;
           }
           .pdf-page-1 .pdf-bullets li {
-            margin-bottom: 4px;
+            margin-bottom: 2px;
           }
           .pdf-page-1 .pdf-body {
-            margin-bottom: 3px;
+            margin-bottom: 2px;
           }
-          /* Page 2 — keep tighter spacing */
+          /* Page 2 spacing */
           .pdf-page-2 .pdf-sec {
-            margin-bottom: 13px;
+            margin-bottom: 9px;
           }
 
           /* ── Header ── */
           .pdf-header {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 12px;
-            align-items: start;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             border-bottom: 1.5px solid #d1d5db;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
           }
           .pdf-header h1 {
-            margin: 0 0 3px;
-            font-size: 26pt;
+            margin: 0 0 2px;
+            font-size: 24pt;
             font-weight: 800;
             color: #111827;
             line-height: 1.05;
@@ -135,7 +136,7 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-hdr-title {
             margin: 0;
-            font-size: 12pt;
+            font-size: 11.5pt;
             font-weight: 700;
             color: #2563eb;
             line-height: 1.2;
@@ -146,14 +147,14 @@ export default function Resume({ personal, education, internships, projects, ski
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 3px;
+            gap: 2.5px;
             justify-content: center;
           }
           .pdf-contact a {
             display: flex;
             align-items: center;
             gap: 5px;
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #374151;
             text-decoration: none;
             line-height: 1.25;
@@ -171,14 +172,14 @@ export default function Resume({ personal, education, internships, projects, ski
             page-break-inside: avoid;
           }
           .pdf-sec h2 {
-            margin: 0 0 5px;
+            margin: 0 0 6px;
             padding-bottom: 2px;
             border-bottom: 1px solid #d1d5db;
-            font-size: 15pt;
+            font-size: 13.5pt;
             font-weight: 700;
             color: #111827;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
             line-height: 1.15;
           }
 
@@ -197,21 +198,21 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-entry h3 {
             margin: 0;
-            font-size: 12pt;
+            font-size: 11.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
           }
           .pdf-sub {
             margin: 1px 0 0;
-            font-size: 10.5pt;
+            font-size: 10pt;
             font-weight: 600;
             color: #2563eb;
             line-height: 1.2;
           }
           .pdf-date {
             flex-shrink: 0;
-            font-size: 9.5pt;
+            font-size: 9pt;
             font-weight: 600;
             color: #6b7280;
             text-align: right;
@@ -220,7 +221,7 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-body {
             margin: 0 0 3px;
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: #374151;
             line-height: 1.32;
           }
@@ -229,7 +230,7 @@ export default function Resume({ personal, education, internships, projects, ski
             padding: 0;
           }
           .pdf-bullets li {
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: #374151;
             margin: 0 0 3px;
             line-height: 1.32;
@@ -251,20 +252,20 @@ export default function Resume({ personal, education, internships, projects, ski
             flex-wrap: wrap;
           }
           .pdf-proj-name {
-            font-size: 12pt;
+            font-size: 11.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
           }
           .pdf-proj-tag {
-            font-size: 10.5pt;
+            font-size: 10pt;
             font-weight: 600;
             color: #2563eb;
             line-height: 1.2;
           }
           .pdf-link {
             flex-shrink: 0;
-            font-size: 9.5pt;
+            font-size: 9pt;
             font-weight: 600;
             color: #2563eb;
             text-decoration: none;
@@ -272,13 +273,13 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-feats {
             margin: 3px 0;
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #374151;
             line-height: 1.32;
           }
           .pdf-tech {
             margin: 3px 0 0;
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #374151;
             line-height: 1.22;
           }
@@ -288,50 +289,44 @@ export default function Resume({ personal, education, internships, projects, ski
           .pdf-skills {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 40px;
+            column-gap: 30px;
             row-gap: 4px;
           }
           .pdf-skill-row {
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: #374151;
             line-height: 1.3;
           }
           .pdf-skill-row strong { color: #111827; font-weight: 700; }
 
           /* ── Certifications 3-col ── */
-          .pdf-cert-table { display: grid; gap: 5px; }
+          .pdf-cert-table { display: grid; gap: 4px; }
           .pdf-cert-row {
             display: grid;
-            grid-template-columns: 2.6fr 1fr 0.42fr;
+            grid-template-columns: 2.2fr 1.3fr 0.5fr;
             gap: 10px;
             align-items: baseline;
           }
-          .pdf-cert-row span { font-size: 9.5pt; color: #374151; line-height: 1.25; }
+          .pdf-cert-row span { font-size: 9pt; color: #374151; line-height: 1.25; }
           .pdf-cert-row strong { font-size: 9.5pt; font-weight: 600; color: #111827; }
           .pdf-cert-row .pdf-cert-year {
             color: #6b7280;
             text-align: right;
             font-weight: 500;
           }
-          .pdf-cert-row a {
-            font-size: 9.5pt;
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 600;
-          }
 
           /* ── Coding Profiles 3-col ── */
-          .pdf-profile-table { display: grid; gap: 5px; }
+          .pdf-profile-table { display: grid; gap: 4px; }
           .pdf-profile-row {
             display: grid;
-            grid-template-columns: 0.65fr 2fr 0.62fr;
+            grid-template-columns: 0.8fr 2.3fr 0.6fr;
             gap: 10px;
             align-items: baseline;
           }
-          .pdf-profile-row span { font-size: 9.5pt; color: #374151; line-height: 1.25; }
+          .pdf-profile-row span { font-size: 9pt; color: #374151; line-height: 1.25; }
           .pdf-profile-row strong { font-size: 9.5pt; font-weight: 700; color: #111827; }
           .pdf-profile-row a {
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #2563eb;
             text-decoration: none;
             font-weight: 600;
@@ -340,7 +335,7 @@ export default function Resume({ personal, education, internships, projects, ski
           }
 
           /* ── Achievement compact ── */
-          .pdf-ach-entry { margin-bottom: 7px; break-inside: avoid; }
+          .pdf-ach-entry { margin-bottom: 6px; break-inside: avoid; }
           .pdf-ach-head {
             display: flex;
             justify-content: space-between;
@@ -349,13 +344,13 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-ach-head h3 {
             margin: 0;
-            font-size: 12pt;
+            font-size: 11.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
           }
           .pdf-ach-meta {
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #6b7280;
             font-weight: 600;
             white-space: nowrap;
@@ -363,14 +358,14 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-ach-sub {
             margin: 1px 0;
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: #2563eb;
             font-weight: 600;
             line-height: 1.2;
           }
           .pdf-ach-body {
             margin: 1px 0 0;
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: #374151;
             line-height: 1.3;
           }
@@ -508,7 +503,7 @@ export default function Resume({ personal, education, internships, projects, ski
                     {p.globalRank && ` | ${p.globalRank.replace("Global Rank: ","Rank ")}`}
                   </span>
                   <a href={p.profileUrl} target="_blank" rel="noopener noreferrer">
-                    Profile&nbsp;<FaExternalLinkAlt style={{fontSize:"7pt",verticalAlign:"middle"}}/>
+                    Profile ↗
                   </a>
                 </div>
               ))}
