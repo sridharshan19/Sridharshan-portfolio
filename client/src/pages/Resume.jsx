@@ -14,9 +14,9 @@ export default function Resume({ personal, education, internships, projects, ski
     "WorkSphere HRMS":       "Enterprise-grade HR operations platform with 5-tier RBAC, shift attendance engine, automated payroll calculator, PDF payslips, asset vault, & AI HR Copilot.",
   };
 
-  /* Page 1 projects (indices 0-1), Page 2 projects (indices 2+) */
-  const p1Projects = (projects || []).slice(0, 2);
-  const p2Projects = (projects || []).slice(2);
+  /* Page 1 projects (indices 0-2), Page 2 projects (indices 3+) */
+  const p1Projects = (projects || []).slice(0, 3);
+  const p2Projects = (projects || []).slice(3);
 
   const renderPdfProject = (proj) => (
     <article key={proj.title} className="pdf-entry pdf-proj">
@@ -57,135 +57,150 @@ export default function Resume({ personal, education, internships, projects, ski
         @media print {
           @page {
             size: A4 portrait;
-            margin: 10mm 12mm;
+            margin: 12mm 14mm 12mm 14mm;
           }
 
           /* Kill everything except pdf-resume */
-          body, html { background: #fff !important; margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; }
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+          body, html {
+            background: #fff !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+          }
           .screen-resume, .floating-print-btn,
           nav, footer, button,
           .custom-cursor-dot, .custom-cursor-outline,
           .fixed, .aurora-bg, .no-print, canvas {
             display: none !important;
           }
-          main { padding-top: 0 !important; }
+          main, .resume-wrapper, .py-12 {
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: visible !important;
+          }
 
           /* Show PDF layer */
           .pdf-resume {
             display: block !important;
-            font-family: 'Inter', system-ui, Arial, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
             font-size: 9pt;
             color: #111827;
-            line-height: 1.28;
+            line-height: 1.3;
             background: #fff;
             width: 100%;
+            box-sizing: border-box;
           }
 
-          /* ── Pages ── */
+          /* ══ Pages ══ */
           .pdf-page {
             width: 100%;
             background: #fff;
             color: #111827;
             box-sizing: border-box;
+            padding: 0;
           }
           .pdf-page-1 {
             page-break-after: always;
             break-after: page;
           }
           .pdf-page-2 {
-            page-break-after: avoid;
-            break-after: avoid;
-          }
-          /* Page 1 spacing */
-          .pdf-page-1 .pdf-sec {
-            margin-bottom: 11px;
-          }
-          .pdf-page-1 .pdf-entry {
-            margin-bottom: 8px;
-          }
-          .pdf-page-1 .pdf-proj {
-            margin-bottom: 9px;
-          }
-          .pdf-page-1 .pdf-bullets li {
-            margin-bottom: 2px;
-          }
-          .pdf-page-1 .pdf-body {
-            margin-bottom: 2px;
-          }
-          /* Page 2 spacing */
-          .pdf-page-2 .pdf-sec {
-            margin-bottom: 9px;
+            page-break-before: auto;
+            break-before: auto;
           }
 
-          /* ── Header ── */
+          /* ══ Page-1 tight spacing (3 projects + edu + intern on one page) ══ */
+          .pdf-page-1 .pdf-sec    { margin-bottom: 8px; }
+          .pdf-page-1 .pdf-entry  { margin-bottom: 5px; }
+          .pdf-page-1 .pdf-proj   { margin-bottom: 6px; }
+          .pdf-page-1 .pdf-body   { margin: 1px 0 1px 0; line-height: 1.3; }
+          .pdf-page-1 .pdf-feats  { margin: 1px 0 1px 0; }
+          .pdf-page-1 .pdf-tech   { margin: 1px 0 0 0; }
+          .pdf-page-1 .pdf-bullets { margin-top: 1px; }
+          .pdf-page-1 .pdf-bullets li { margin-bottom: 1px; }
+          .pdf-page-1 .pdf-sec h2 { margin-bottom: 4px; }
+
+          /* ══ Page-2 spacing (3 projects + achievements + skills + profiles + certs) ══ */
+          .pdf-page-2 .pdf-sec    { margin-bottom: 7px; }
+          .pdf-page-2 .pdf-proj   { margin-bottom: 6px; }
+          .pdf-page-2 .pdf-ach-entry { margin-bottom: 5px; }
+          .pdf-page-2 .pdf-sec h2 { margin-bottom: 4px; }
+
+          /* ══ Header ══ */
           .pdf-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 1.5px solid #d1d5db;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
+            border-bottom: 2px solid #1e3a5f;
+            padding-bottom: 7px;
+            margin-bottom: 10px;
           }
+          .pdf-header-left { flex: 1; }
           .pdf-header h1 {
-            margin: 0 0 2px;
-            font-size: 24pt;
+            margin: 0 0 3px 0;
+            font-size: 22pt;
             font-weight: 800;
             color: #111827;
             line-height: 1.05;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
           }
           .pdf-hdr-title {
             margin: 0;
-            font-size: 11.5pt;
+            font-size: 10.5pt;
             font-weight: 700;
-            color: #2563eb;
+            color: #1d4ed8;
             line-height: 1.2;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.6px;
           }
           .pdf-contact {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 2.5px;
-            justify-content: center;
+            gap: 3px;
+            padding-top: 4px;
           }
-          .pdf-contact a {
+          .pdf-contact-item {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 9pt;
+            gap: 4px;
+            font-size: 8.5pt;
             color: #374151;
             text-decoration: none;
-            line-height: 1.25;
+            line-height: 1.3;
             white-space: nowrap;
           }
-          .pdf-contact a svg {
-            color: #2563eb;
+          .pdf-contact-icon {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: #1d4ed8;
+            border-radius: 50%;
             flex-shrink: 0;
+            vertical-align: middle;
           }
 
-          /* ── Section wrapper ── */
+          /* ══ Section wrapper ══ */
           .pdf-sec {
-            margin: 0 0 10px;
-            break-inside: avoid;
-            page-break-inside: avoid;
+            margin: 0 0 9px 0;
           }
+          .pdf-page-1 .pdf-sec { margin-bottom: 10px; }
+          .pdf-page-2 .pdf-sec { margin-bottom: 8px; }
           .pdf-sec h2 {
-            margin: 0 0 6px;
+            margin: 0 0 5px 0;
             padding-bottom: 2px;
-            border-bottom: 1px solid #d1d5db;
-            font-size: 13.5pt;
-            font-weight: 700;
-            color: #111827;
+            border-bottom: 1.5px solid #1e3a5f;
+            font-size: 10pt;
+            font-weight: 800;
+            color: #1e3a5f;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            line-height: 1.15;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
           }
 
-          /* ── Generic entry ── */
+          /* ══ Entry rows ══ */
           .pdf-entry {
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             break-inside: avoid;
             page-break-inside: avoid;
           }
@@ -194,148 +209,200 @@ export default function Resume({ personal, education, internships, projects, ski
             justify-content: space-between;
             align-items: flex-start;
             gap: 8px;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
           }
+          .pdf-entry-left { flex: 1; min-width: 0; }
           .pdf-entry h3 {
             margin: 0;
-            font-size: 11.5pt;
+            font-size: 10.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
           }
           .pdf-sub {
-            margin: 1px 0 0;
-            font-size: 10pt;
+            margin: 1px 0 0 0;
+            font-size: 9.5pt;
             font-weight: 600;
-            color: #2563eb;
+            color: #1d4ed8;
             line-height: 1.2;
           }
           .pdf-date {
             flex-shrink: 0;
-            font-size: 9pt;
+            font-size: 8.5pt;
             font-weight: 600;
-            color: #6b7280;
+            color: #4b5563;
             text-align: right;
-            line-height: 1.2;
+            line-height: 1.3;
             white-space: nowrap;
           }
+          .pdf-date-score {
+            display: block;
+            color: #1d4ed8;
+            font-weight: 700;
+            margin-top: 1px;
+          }
           .pdf-body {
-            margin: 0 0 3px;
-            font-size: 9.5pt;
+            margin: 2px 0 2px 0;
+            font-size: 9pt;
             color: #374151;
-            line-height: 1.32;
+            line-height: 1.35;
           }
           .pdf-bullets {
-            margin: 0 0 4px 14px;
+            margin: 2px 0 0 12px;
             padding: 0;
+            list-style: disc;
           }
           .pdf-bullets li {
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #374151;
-            margin: 0 0 3px;
-            line-height: 1.32;
+            margin: 0 0 2px 0;
+            line-height: 1.33;
           }
 
-          /* ── Project-specific ── */
-          .pdf-proj { margin-bottom: 9px; }
+          /* ══ Projects ══ */
+          .pdf-proj {
+            margin-bottom: 8px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
           .pdf-proj-head {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 8px;
-            margin-bottom: 2px;
+            gap: 6px;
+            margin-bottom: 1px;
           }
           .pdf-proj-left {
             display: flex;
             align-items: baseline;
-            gap: 8px;
-            flex-wrap: wrap;
+            gap: 6px;
+            flex-wrap: nowrap;
+            flex: 1;
+            min-width: 0;
           }
           .pdf-proj-name {
-            font-size: 11.5pt;
+            font-size: 10.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
+            white-space: nowrap;
           }
           .pdf-proj-tag {
-            font-size: 10pt;
+            font-size: 9.5pt;
             font-weight: 600;
-            color: #2563eb;
+            color: #1d4ed8;
             line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .pdf-link {
             flex-shrink: 0;
-            font-size: 9pt;
-            font-weight: 600;
-            color: #2563eb;
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #1d4ed8;
             text-decoration: none;
             white-space: nowrap;
+            border: 1px solid #1d4ed8;
+            padding: 0px 4px;
+            border-radius: 3px;
           }
           .pdf-feats {
-            margin: 3px 0;
-            font-size: 9pt;
+            margin: 2px 0 2px 0;
+            font-size: 8.5pt;
             color: #374151;
-            line-height: 1.32;
+            line-height: 1.35;
           }
           .pdf-tech {
-            margin: 3px 0 0;
-            font-size: 9pt;
-            color: #374151;
-            line-height: 1.22;
+            margin: 2px 0 0 0;
+            font-size: 8.5pt;
+            color: #4b5563;
+            line-height: 1.25;
           }
-          .pdf-tech strong { color: #111827; font-weight: 700; margin-right: 2px; }
+          .pdf-tech strong {
+            color: #111827;
+            font-weight: 700;
+            margin-right: 2px;
+          }
 
-          /* ── Skills 2-col grid ── */
+          /* ══ Skills — 2-column grid ══ */
           .pdf-skills {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 30px;
+            column-gap: 24px;
             row-gap: 4px;
           }
           .pdf-skill-row {
-            font-size: 9.5pt;
+            font-size: 9pt;
             color: #374151;
-            line-height: 1.3;
+            line-height: 1.35;
           }
-          .pdf-skill-row strong { color: #111827; font-weight: 700; }
+          .pdf-skill-row strong {
+            color: #111827;
+            font-weight: 700;
+            margin-right: 2px;
+          }
 
-          /* ── Certifications 3-col ── */
-          .pdf-cert-table { display: grid; gap: 4px; }
+          /* ══ Certifications — 3-column ══ */
+          .pdf-cert-table {
+            display: grid;
+            gap: 4px;
+          }
           .pdf-cert-row {
             display: grid;
-            grid-template-columns: 2.2fr 1.3fr 0.5fr;
-            gap: 10px;
+            grid-template-columns: 3fr 1.8fr 0.5fr;
+            gap: 8px;
             align-items: baseline;
           }
-          .pdf-cert-row span { font-size: 9pt; color: #374151; line-height: 1.25; }
-          .pdf-cert-row strong { font-size: 9.5pt; font-weight: 600; color: #111827; }
-          .pdf-cert-row .pdf-cert-year {
-            color: #6b7280;
-            text-align: right;
-            font-weight: 500;
+          .pdf-cert-row strong {
+            font-size: 9pt;
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.3;
+          }
+          .pdf-cert-row span {
+            font-size: 8.5pt;
+            color: #374151;
+            line-height: 1.25;
+          }
+          .pdf-cert-year {
+            color: #4b5563 !important;
+            text-align: right !important;
+            font-weight: 500 !important;
           }
 
-          /* ── Coding Profiles 3-col ── */
+          /* ══ Coding Profiles — 3-column ══ */
           .pdf-profile-table { display: grid; gap: 4px; }
           .pdf-profile-row {
             display: grid;
-            grid-template-columns: 0.8fr 2.3fr 0.6fr;
-            gap: 10px;
+            grid-template-columns: 1fr 2.5fr 0.7fr;
+            gap: 8px;
             align-items: baseline;
           }
-          .pdf-profile-row span { font-size: 9pt; color: #374151; line-height: 1.25; }
-          .pdf-profile-row strong { font-size: 9.5pt; font-weight: 700; color: #111827; }
-          .pdf-profile-row a {
+          .pdf-profile-row strong {
             font-size: 9pt;
-            color: #2563eb;
+            font-weight: 700;
+            color: #111827;
+          }
+          .pdf-profile-row span {
+            font-size: 8.5pt;
+            color: #374151;
+            line-height: 1.25;
+          }
+          .pdf-profile-row a {
+            font-size: 8.5pt;
+            color: #1d4ed8;
             text-decoration: none;
             font-weight: 600;
             text-align: right;
             white-space: nowrap;
           }
 
-          /* ── Achievement compact ── */
-          .pdf-ach-entry { margin-bottom: 6px; break-inside: avoid; }
+          /* ══ Achievements ══ */
+          .pdf-ach-entry {
+            margin-bottom: 6px;
+            break-inside: avoid;
+          }
           .pdf-ach-head {
             display: flex;
             justify-content: space-between;
@@ -344,30 +411,23 @@ export default function Resume({ personal, education, internships, projects, ski
           }
           .pdf-ach-head h3 {
             margin: 0;
-            font-size: 11.5pt;
+            font-size: 10.5pt;
             font-weight: 700;
             color: #111827;
             line-height: 1.2;
           }
           .pdf-ach-meta {
-            font-size: 9pt;
-            color: #6b7280;
+            font-size: 8.5pt;
+            color: #4b5563;
             font-weight: 600;
             white-space: nowrap;
             flex-shrink: 0;
           }
-          .pdf-ach-sub {
-            margin: 1px 0;
-            font-size: 9.5pt;
-            color: #2563eb;
-            font-weight: 600;
-            line-height: 1.2;
-          }
           .pdf-ach-body {
-            margin: 1px 0 0;
-            font-size: 9.5pt;
+            margin: 2px 0 0 0;
+            font-size: 9pt;
             color: #374151;
-            line-height: 1.3;
+            line-height: 1.32;
           }
         }
       `}} />
@@ -382,23 +442,27 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* Header */}
           <header className="pdf-header">
-            <div>
+            <div className="pdf-header-left">
               <h1>{personal?.name || "SRIDHARSHAN M N"}</h1>
               <p className="pdf-hdr-title">Java Full Stack Developer</p>
             </div>
             <div className="pdf-contact">
-              <a href={personal?.phone ? `tel:${personal.phone}` : "#"}>
-                <FaPhoneAlt />{personal?.phone}
-              </a>
-              <a href={personal?.email ? `mailto:${personal.email}` : "#"}>
-                <FaEnvelope />{personal?.email}
-              </a>
-              <a href={personal?.github} target="_blank" rel="noopener noreferrer">
-                <FaGithub />{personal?.github?.replace(/^https?:\/\/(www\.)?/, "") || "github.com/sridharshan19"}
-              </a>
-              <a href={personal?.linkedin} target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />{personal?.linkedin?.replace(/^https?:\/\/(www\.)?/, "") || "linkedin.com/in/sridharshan"}
-              </a>
+              <div className="pdf-contact-item">
+                <span className="pdf-contact-icon" />
+                {personal?.phone || "+91 9344460701"}
+              </div>
+              <div className="pdf-contact-item">
+                <span className="pdf-contact-icon" />
+                {personal?.email || "sridharshans556@gmail.com"}
+              </div>
+              <div className="pdf-contact-item">
+                <span className="pdf-contact-icon" />
+                {personal?.github?.replace(/^https?:\/\/(www\.)?/, "") || "github.com/sridharshan19"}
+              </div>
+              <div className="pdf-contact-item">
+                <span className="pdf-contact-icon" />
+                {personal?.linkedin?.replace(/^https?:\/\/(www\.)?/, "") || "linkedin.com/in/sridharshan-m-n-2564232b6"}
+              </div>
             </div>
           </header>
 
@@ -408,16 +472,16 @@ export default function Resume({ personal, education, internships, projects, ski
             {education?.map((edu) => (
               <article key={`${edu.institution}-${edu.degree}`} className="pdf-entry">
                 <div className="pdf-entry-head">
-                  <div>
+                  <div className="pdf-entry-left">
                     <h3>{edu.institution}</h3>
                     <p className="pdf-sub">{edu.degree}</p>
                   </div>
                   <div className="pdf-date">
-                    <div>{edu.period}</div>
-                    <div style={{color:"#2563eb",fontWeight:600}}>{edu.score}</div>
+                    {edu.period}
+                    <span className="pdf-date-score">{edu.score}</span>
                   </div>
                 </div>
-                <p className="pdf-body" style={{marginTop:"1px"}}>{edu.details}</p>
+                <p className="pdf-body">{edu.details}</p>
               </article>
             ))}
           </section>
@@ -428,11 +492,11 @@ export default function Resume({ personal, education, internships, projects, ski
             {internships?.map((intern) => (
               <article key={`${intern.company}-${intern.role}`} className="pdf-entry">
                 <div className="pdf-entry-head">
-                  <div>
+                  <div className="pdf-entry-left">
                     <h3>{intern.role}</h3>
                     <p className="pdf-sub">{intern.company}</p>
                   </div>
-                  <span className="pdf-date">{intern.year} | {intern.duration}</span>
+                  <span className="pdf-date">{intern.year}&nbsp;&nbsp;{intern.duration}</span>
                 </div>
                 <ul className="pdf-bullets">
                   {intern.bullets.slice(0, 3).map((b) => (
@@ -453,9 +517,9 @@ export default function Resume({ personal, education, internships, projects, ski
         {/* ─── PAGE 2: NextGen + LeaveMate + Achievements + Skills + Profiles + Certs ─── */}
         <div className="pdf-page pdf-page-2">
 
-          {/* Projects — Page 2 (NextGen + LeaveMate) */}
+          {/* Projects — Page 2 continuation ─── */}
           <section className="pdf-sec">
-            <h2>Projects <span style={{fontSize:"9pt",fontWeight:400,color:"#6b7280"}}>(continued)</span></h2>
+            <h2>Projects</h2>
             {p2Projects.map(renderPdfProject)}
           </section>
 
