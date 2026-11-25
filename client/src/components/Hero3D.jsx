@@ -48,33 +48,33 @@ function Scene({ mouse }) {
       <pointLight position={[-10, -10, -10]} intensity={1.0} color="#8B5CF6" />
       
       {/* Dynamic Floating primitives */}
-      <Float speed={1.5} rotationIntensity={1.2} floatIntensity={1.5}>
+      <Float speed={1.2} rotationIntensity={0.8} floatIntensity={1}>
         <FloatingShape
           geometry="torus"
-          color="#6366F1"
+          color="#3B82F6"
           position={[0, 0, 0]}
-          speed={[0.1, 0.2]}
-          size={1.2}
+          speed={[0.07, 0.14]}
+          size={1.05}
         />
       </Float>
 
-      <Float speed={2} rotationIntensity={1} floatIntensity={2}>
+      <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.2}>
         <FloatingShape
           geometry="dodecahedron"
           color="#8B5CF6"
           position={[-3, 2, -2]}
-          speed={[0.2, 0.1]}
-          size={0.7}
+          speed={[0.12, 0.08]}
+          size={0.65}
         />
       </Float>
 
-      <Float speed={1} rotationIntensity={1.5} floatIntensity={1}>
+      <Float speed={1} rotationIntensity={1} floatIntensity={0.9}>
         <FloatingShape
           geometry="icosahedron"
-          color="#0EA5E9"
+          color="#22D3EE"
           position={[3.2, -1.8, -1]}
-          speed={[0.15, 0.25]}
-          size={0.8}
+          speed={[0.1, 0.16]}
+          size={0.7}
         />
       </Float>
     </group>
@@ -101,8 +101,8 @@ export default function Hero3D() {
     // Beautiful pure CSS fallback for safety if WebGL is disabled or errored
     return (
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden opacity-40">
-        <div className="w-80 h-80 rounded-full border border-brand-indigo/20 bg-gradient-to-r from-brand-purple/5 to-brand-cyan/5 blur-2xl animate-pulse floating-icon" />
-        <div className="w-60 h-60 rounded-full border border-brand-cyan/20 bg-gradient-to-r from-brand-pink/5 to-brand-gold/5 blur-2xl animate-pulse floating-icon" style={{ animationDelay: "2s" }} />
+        <div className="w-80 h-80 rounded-full border border-[#3B82F6]/20 bg-gradient-to-r from-[#8B5CF6]/10 to-[#22D3EE]/10 blur-2xl animate-pulse floating-icon" />
+        <div className="w-60 h-60 rounded-full border border-[#22D3EE]/20 bg-gradient-to-r from-[#3B82F6]/10 to-[#8B5CF6]/10 blur-2xl animate-pulse floating-icon" style={{ animationDelay: "2s" }} />
       </div>
     );
   }

@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 export default function AnimatedPage({ children }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}     // page enters from below
-      animate={{ opacity: 1, y: 0 }}      // visible state
-      exit={{ opacity: 0, y: -30 }}       // exit animation
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
       className="min-h-screen"
     >
       {children}

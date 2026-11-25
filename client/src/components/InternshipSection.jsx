@@ -39,41 +39,41 @@ function InternshipCard({ intern, idx }) {
       transition={{ duration: 0.6, delay: idx * 0.15 }}
     >
       {/* Light gradient highlight */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-brand-indigo/5 to-brand-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#3B82F6]/5 to-[#8B5CF6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div>
         {/* Header Metadata */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <span className="text-xs bg-brand-purple/10 text-brand-purple px-4 py-1.5 rounded-full border border-brand-purple/20 font-bold uppercase tracking-wider">
+          <span className="text-xs bg-[#3B82F6]/10 text-[#3B82F6] dark:text-[#22D3EE] px-3.5 py-1 rounded-full border border-[#3B82F6]/25 font-bold uppercase tracking-wider">
             {intern.year}
           </span>
-          <span className="text-xs text-brand-cyan font-extrabold tracking-widest uppercase">
+          <span className="text-xs text-[#8B5CF6] dark:text-[#22D3EE] font-bold tracking-widest uppercase">
             ⏱ {intern.duration}
           </span>
         </div>
 
         {/* Title & Company */}
-        <h3 className="text-2xl font-display font-extrabold text-slate-900 dark:text-white group-hover:text-brand-purple transition-colors duration-300 mb-1">
+        <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] group-hover:text-[#3B82F6] dark:group-hover:text-[#22D3EE] transition-colors duration-300 mb-1">
           {intern.role}
         </h3>
-        <p className="text-sm text-slate-600 dark:text-gray-400 font-semibold mb-6">
+        <p className="text-sm text-slate-600 dark:text-[#94A3B8] font-semibold mb-6">
           {intern.company}
         </p>
 
         {/* Bullets List */}
-        <ul className="space-y-3.5 mb-6">
+        <ul className="space-y-3 mb-6">
           {intern.bullets.map((bullet, bIdx) => (
-            <li key={bIdx} className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed flex items-start gap-3">
-              <span className="w-2 h-2 rounded-full bg-brand-pink mt-1 flex-shrink-0" />
+            <li key={bIdx} className="text-xs text-slate-600 dark:text-[#94A3B8] leading-relaxed flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-1.5 flex-shrink-0" />
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="mt-8 pt-4 border-t border-slate-200 dark:border-white/5 text-[10px] text-gray-500 font-bold tracking-widest uppercase flex items-center justify-between">
+      <div className="mt-6 pt-4 border-t border-slate-200 dark:border-[rgba(148,163,184,0.15)] text-[10px] text-slate-500 dark:text-[#94A3B8] font-bold tracking-widest uppercase flex items-center justify-between">
         <span>Internship Experience</span>
-        <span className="text-brand-pink">Verified ✓</span>
+        <span className="text-[#22D3EE]">Completed ✓</span>
       </div>
     </motion.div>
   );
@@ -83,9 +83,9 @@ export default function InternshipSection({ internships }) {
   if (!internships) return null;
 
   return (
-    <section id="internships" className="section-shell bg-white/[0.002]">
+    <section id="internships" className="section-shell">
       {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-brand-indigo/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#3B82F6]/10 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="section-container">
         {/* Title */}

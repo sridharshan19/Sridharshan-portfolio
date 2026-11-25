@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaSearch, FaFilter } from "react-icons/fa";
+import { AnimatePresence } from "framer-motion";
+import { FaSearch } from "react-icons/fa";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
@@ -38,7 +39,7 @@ export default function ProjectsSection({ projects }) {
   return (
     <section id="projects" className="section-shell">
       {/* Decorative Blur */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-brand-pink/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 right-10 w-96 h-96 bg-[#8B5CF6]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="section-container">
         {/* Title */}
@@ -60,10 +61,10 @@ export default function ProjectsSection({ projects }) {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-2 text-xs font-extrabold transition clickable ${
+                className={`rounded-xl px-4 py-2 text-xs font-semibold transition clickable ${
                   selectedCategory === cat
-                    ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950 shadow-md"
-                    : "border border-slate-200 bg-white/60 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10"
+                    ? "bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-[0_0_18px_rgba(59,130,246,0.3)]"
+                    : "border border-slate-200 bg-white/70 text-slate-600 hover:border-[#3B82F6]/40 dark:border-[rgba(148,163,184,0.15)] dark:bg-[#111827] dark:text-[#94A3B8] dark:hover:text-[#F8FAFC]"
                 }`}
               >
                 {cat}
@@ -79,15 +80,15 @@ export default function ProjectsSection({ projects }) {
               placeholder="Search projects or tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-full border border-slate-200 bg-white/70 py-2.5 pl-9 pr-4 text-xs text-slate-800 outline-none transition focus:border-brand-indigo dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:border-brand-cyan"
+              className="glass-input py-2.5 pl-9 pr-4 text-xs"
             />
           </div>
         </div>
 
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 dark:border-white/10 p-12 text-center">
-            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+          <div className="rounded-2xl border border-dashed border-slate-300 dark:border-[rgba(148,163,184,0.2)] p-12 text-center">
+            <p className="text-sm font-semibold text-slate-500 dark:text-[#94A3B8]">
               No projects found matching "{searchQuery}" in category "{selectedCategory}".
             </p>
             <button
@@ -95,7 +96,7 @@ export default function ProjectsSection({ projects }) {
                 setSearchQuery("");
                 setSelectedCategory("All");
               }}
-              className="mt-4 text-xs font-bold text-brand-indigo dark:text-brand-cyan hover:underline clickable"
+              className="mt-4 text-xs font-bold text-[#3B82F6] dark:text-[#22D3EE] hover:underline clickable"
             >
               Reset filters
             </button>
@@ -115,12 +116,15 @@ export default function ProjectsSection({ projects }) {
       </div>
 
       {/* Detail Modal */}
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal
+            key={selectedProject.title}
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -12,7 +12,7 @@ function AchievementCard({ ach, idx }) {
         y: -70 - (i % 5) * 18,
         size: 5 + (i % 4),
         rotate: i * 31,
-        color: ["#4F46E5", "#06B6D4", "#EC4899", "#F59E0B", "#14B8A6"][i % 5],
+        color: ["#3B82F6", "#8B5CF6", "#22D3EE", "#F59E0B", "#60A5FA"][i % 5],
         delay: (i % 4) * 0.04
       })),
     []
@@ -53,26 +53,32 @@ function AchievementCard({ ach, idx }) {
 
       <div className="relative z-20">
         <div className="mb-6 flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/25 bg-brand-gold/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-brand-gold">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#3B82F6] dark:text-[#22D3EE]">
             <FaMedal /> Recognition
           </span>
-          <span className="text-sm font-black text-brand-pink">{ach.year}</span>
+          <span className="text-sm font-bold text-[#8B5CF6]">{ach.year}</span>
         </div>
 
-        <div className="mb-6 grid h-16 w-16 place-items-center rounded-3xl bg-slate-950 text-2xl text-white transition group-hover:scale-110 dark:bg-white dark:text-slate-950">
+        <div className="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] text-2xl text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] transition group-hover:scale-105">
           <FaAward />
         </div>
 
-        <h3 className="font-display text-2xl font-black tracking-tight text-slate-950 transition group-hover:text-brand-pink dark:text-white">
+        <h3 className="font-display text-2xl font-bold tracking-tight text-slate-950 transition group-hover:text-[#3B82F6] dark:text-[#F8FAFC] dark:group-hover:text-[#22D3EE]">
           {ach.title}
         </h3>
-        <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-brand-cyan">{ach.issuer}</p>
-        <p className="mt-5 text-sm leading-7 text-slate-600 dark:text-slate-400">{ach.description}</p>
+        <p className="mt-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#22D3EE]">{ach.issuer}</p>
+        <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-[#94A3B8]">{ach.description}</p>
       </div>
 
-      <div className="relative z-20 mt-8 flex items-center justify-between border-t border-slate-200 pt-4 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:border-white/10 dark:text-slate-400">
+      <div className="relative z-20 mt-8 flex items-center justify-between border-t border-slate-200 pt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:border-[rgba(148,163,184,0.15)] dark:text-[#94A3B8]">
         <span>Achievement</span>
-        <span className="text-brand-gold">First Prize</span>
+        <span className="text-[#F59E0B]">
+          {ach.title?.toLowerCase().includes("first")
+            ? "First Prize"
+            : ach.title?.toLowerCase().includes("finalist")
+              ? "National Finalist"
+              : "Recognized"}
+        </span>
       </div>
     </motion.article>
   );
@@ -83,7 +89,7 @@ export default function AchievementsSection({ achievements }) {
 
   return (
     <section id="achievements" className="section-shell">
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#3B82F6]/10 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="section-container">
         <div className="mb-14 max-w-3xl">

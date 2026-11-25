@@ -1,40 +1,43 @@
 import React, { useEffect, useState, useRef } from "react";
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [outlinePosition, setOutlinePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const dotRef = useRef(null);
   const outlineRef = useRef(null);
+  const targetPos = useRef({ x: 0, y: 0 });
+  const outlinePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    const finePointer = window.matchMedia?.("(pointer: fine)")?.matches;
+    if (!finePointer) return undefined;
+
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
+      targetPos.current.x = e.clientX;
+      targetPos.current.y = e.clientY;
+      if (dotRef.current) {
+        dotRef.current.style.left = `${e.clientX}px`;
+        dotRef.current.style.top = `${e.clientY}px`;
+      }
+      setIsVisible((prev) => (prev ? prev : true));
     };
 
     const handleMouseDown = () => setIsClicked(true);
     const handleMouseUp = () => setIsClicked(false);
 
-    // Track mouse hover states on interactive tags
     const handleMouseOver = (e) => {
       const target = e.target;
-      const isInteractive = 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON' || 
-        target.closest('a') || 
-        target.closest('button') ||
-        target.classList.contains('clickable') ||
-        target.closest('.clickable');
-      
-      if (isInteractive) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
+      const isInteractive =
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button") ||
+        target.classList.contains("clickable") ||
+        target.closest(".clickable");
+
+      setIsHovered(Boolean(isInteractive));
     };
 
     const handleMouseLeave = () => {
@@ -47,34 +50,28 @@ export default function CustomCursor() {
     document.addEventListener("mouseover", handleMouseOver);
     document.body.addEventListener("mouseleave", handleMouseLeave);
 
+    let animId;
+    const updateOutline = () => {
+      const ease = 0.16;
+      outlinePos.current.x += (targetPos.current.x - outlinePos.current.x) * ease;
+      outlinePos.current.y += (targetPos.current.y - outlinePos.current.y) * ease;
+      if (outlineRef.current) {
+        outlineRef.current.style.left = `${outlinePos.current.x}px`;
+        outlineRef.current.style.top = `${outlinePos.current.y}px`;
+      }
+      animId = requestAnimationFrame(updateOutline);
+    };
+    animId = requestAnimationFrame(updateOutline);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseover", handleMouseOver);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(animId);
     };
   }, []);
-
-  // Outlined circle smoothly trails the dot position using requestAnimationFrame
-  useEffect(() => {
-    let animId;
-    const updateOutline = () => {
-      setOutlinePosition((prev) => {
-        const dx = position.x - prev.x;
-        const dy = position.y - prev.y;
-        // Ease speed
-        const ease = 0.15;
-        return {
-          x: prev.x + dx * ease,
-          y: prev.y + dy * ease
-        };
-      });
-      animId = requestAnimationFrame(updateOutline);
-    };
-    animId = requestAnimationFrame(updateOutline);
-    return () => cancelAnimationFrame(animId);
-  }, [position]);
 
   if (!isVisible) return null;
 
@@ -84,10 +81,6 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className="custom-cursor-dot hidden md:block"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`
-        }}
       />
       {/* Outer Trailing Circle */}
       <div
@@ -95,10 +88,6 @@ export default function CustomCursor() {
         className={`custom-cursor-outline hidden md:block ${
           isHovered ? "custom-cursor-hover" : ""
         } ${isClicked ? "custom-cursor-click" : ""}`}
-        style={{
-          left: `${outlinePosition.x}px`,
-          top: `${outlinePosition.y}px`
-        }}
       />
     </>
   );

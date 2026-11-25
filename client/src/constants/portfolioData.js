@@ -17,7 +17,7 @@ export const fallbackPortfolioData = {
     "leetcodeSolved": "300+",
     "skillrackSolved": "400+",
     "hackathonsWon": "2+",
-    "projectsCompleted": "6+"
+    "projectsCompleted": "7+"
   },
   "skills": {
     "programming": [
@@ -30,8 +30,7 @@ export const fallbackPortfolioData = {
       { "name": "HTML", "level": 95 },
       { "name": "CSS", "level": 90 },
       { "name": "React.js", "level": 90 },
-      { "name": "Tailwind CSS", "level": 85 },
-      { "name": "Bootstrap", "level": 80 }
+      { "name": "Tailwind CSS", "level": 85 }
     ],
     "backend": [
       { "name": "Node.js", "level": 85 },
@@ -116,7 +115,7 @@ export const fallbackPortfolioData = {
       ],
       "description": "Full-stack farm-to-consumer marketplace with role-based access, inventory tracking, analytics, and PDF report generation.",
       "github": "https://github.com/sridharshan19/NatureCart-Full-Stack-Farmers-Marketplace",
-      "demo": "#",
+      "demo": "https://nature-cart-full-stack-farmers-mark-pi.vercel.app/",
       "icon": "🛒"
     },
     {
@@ -198,6 +197,21 @@ export const fallbackPortfolioData = {
       "github": "https://github.com/sridharshan19/WorkSphere-Smart-Workforce-Human-Resource-Management-System-HRMS-",
       "demo": "#",
       "icon": "🏢"
+    },
+    {
+      "title": "Attendly",
+      "tagline": "Student Attendance Calculator",
+      "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "features": [
+        "Real-Time Attendance Tracking",
+        "Smart Bunk Planning & Safe Margin",
+        "Recovery Lecture Calculations",
+        "Interactive Milestone Gauges"
+      ],
+      "description": "Developed Attendly, a Next.js-based student attendance calculator with real-time tracking, bunk planning, recovery calculations, and milestone gauges.",
+      "github": "https://github.com/sridharshan19/Attendly-Track-and-plan-your-semester-attendance.",
+      "demo": "https://attendly-attendance-calculator.vercel.app/",
+      "icon": "📊"
     }
   ],
   "achievements": [
@@ -220,14 +234,14 @@ export const fallbackPortfolioData = {
       "solved": "300+",
       "rating": "Contest Rating: 1579",
       "globalRank": "Global Rank: 231,449",
-      "profileUrl": "https://leetcode.com/u/sridharshan_mn2023eee/"
+      "profileUrl": "https://leetcode.com/u/sridharshan19/"
     },
     {
       "platform": "SkillRack",
       "solved": "400+",
       "rating": "Silver / Gold Badges",
       "globalRank": "Global Rank: 78,911",
-      "profileUrl": "https://www.skillrack.com/profile/78911"
+      "profileUrl": "http://www.skillrack.com/profile/484599/58eb84c2a70f088602875a4726569d293cf1798f"
     }
   ],
   "certifications": [

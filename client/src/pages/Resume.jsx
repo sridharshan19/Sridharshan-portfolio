@@ -12,6 +12,7 @@ export default function Resume({ personal, education, internships, projects, ski
     "NextGen Resume Builder":"Created a dynamic resume builder with live templates, auto-save, Google OAuth authentication and Razorpay premium payment integration.",
     LeaveMate:               "Built a leave management platform with employee request workflows, admin approval dashboards, real-time status updates and visual metrics.",
     "WorkSphere HRMS":       "Enterprise-grade HR operations platform with 5-tier RBAC, shift attendance engine, automated payroll calculator, PDF payslips, asset vault, & AI HR Copilot.",
+    Attendly:                "Built a Next.js and TypeScript student attendance calculator with real-time tracking, bunk planning, recovery calculations, and milestone gauges."
   };
 
   /* Page 1 projects (indices 0-2), Page 2 projects (indices 3+) */
@@ -444,7 +445,7 @@ export default function Resume({ personal, education, internships, projects, ski
           <header className="pdf-header">
             <div className="pdf-header-left">
               <h1>{personal?.name || "SRIDHARSHAN M N"}</h1>
-              <p className="pdf-hdr-title">Java Full Stack Developer</p>
+              <p className="pdf-hdr-title">{personal?.designations?.[0] || "Java Full Stack Developer"}</p>
             </div>
             <div className="pdf-contact">
               <div className="pdf-contact-item">
@@ -507,14 +508,14 @@ export default function Resume({ personal, education, internships, projects, ski
             ))}
           </section>
 
-          {/* Projects — Page 1 (NatureCart + TransTrack) */}
+          {/* Projects — Page 1 (indices 0-2) */}
           <section className="pdf-sec">
             <h2>Projects</h2>
             {p1Projects.map(renderPdfProject)}
           </section>
         </div>
 
-        {/* ─── PAGE 2: NextGen + LeaveMate + Achievements + Skills + Profiles + Certs ─── */}
+        {/* ─── PAGE 2: Remaining Projects + Achievements + Skills + Profiles + Certs ─── */}
         <div className="pdf-page pdf-page-2">
 
           {/* Projects — Page 2 continuation ─── */}
@@ -532,11 +533,7 @@ export default function Resume({ personal, education, internships, projects, ski
                   <h3>{ach.title}</h3>
                   <span className="pdf-ach-meta">{ach.issuer} | {ach.year}</span>
                 </div>
-                <p className="pdf-ach-body">
-                  {ach.title.includes("INTELLINA")
-                    ? "National Finalist – Mentor–Student Tracker web application"
-                    : "First Prize – Designed and built an industry-grade project within 24 hours"}
-                </p>
+                <p className="pdf-ach-body">{ach.description}</p>
               </div>
             ))}
           </section>
@@ -598,83 +595,92 @@ export default function Resume({ personal, education, internships, projects, ski
       <div className="fixed bottom-8 right-8 md:bottom-auto md:top-24 md:right-8 z-30 no-print floating-print-btn">
         <button
           onClick={handlePrint}
-          className="glow-btn flex items-center gap-2 px-5 py-3.5 bg-gradient-to-r from-brand-indigo via-brand-purple to-brand-cyan text-white font-bold rounded-full shadow-2xl shadow-brand-indigo/30 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer clickable"
+          className="glow-btn flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white font-semibold rounded-xl shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer clickable"
           title="Print / Save ATS PDF"
         >
-          <FaPrint className="text-base" />
-          <span className="hidden sm:inline text-xs uppercase tracking-wider">Save PDF</span>
+          <FaPrint className="text-sm" />
+          <span className="hidden sm:inline text-xs uppercase tracking-wider">Download PDF</span>
         </button>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .tech-chip {
           display:inline-flex; align-items:center; gap:5px; padding:3px 9px;
-          border-radius:6px; font-size:11px; font-weight:500;
-          border:1px solid rgba(148,163,184,0.2); background:rgba(148,163,184,0.07);
-          color:#64748b; transition:all 0.2s ease; cursor:default; white-space:nowrap;
+          border-radius:8px; font-size:11px; font-weight:600;
+          border:1px solid rgba(148,163,184,0.18); background:rgba(148,163,184,0.08);
+          color:#475569; transition:all 0.2s ease; cursor:default; white-space:nowrap;
         }
-        .dark .tech-chip { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); color:#94a3b8; }
-        .tech-chip:hover { background:rgba(99,102,241,0.1); border-color:rgba(99,102,241,0.3); color:#6366f1; transform:translateY(-1px); box-shadow:0 4px 12px rgba(99,102,241,0.15); }
-        .dark .tech-chip:hover { background:rgba(99,102,241,0.15); border-color:rgba(99,102,241,0.4); color:#a5b4fc; }
+        .dark .tech-chip { background:#0D1220; border-color:rgba(148,163,184,0.15); color:#94A3B8; }
+        .tech-chip:hover { background:rgba(59,130,246,0.12); border-color:rgba(59,130,246,0.4); color:#3B82F6; transform:translateY(-1px); }
+        .dark .tech-chip:hover { background:rgba(59,130,246,0.15); border-color:rgba(34,211,238,0.45); color:#22D3EE; }
         .tech-chip .tc-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; display:inline-block; }
         .proj-card {
-          border-radius:12px; border:1px solid rgba(148,163,184,0.15);
+          border-radius:14px; border:1px solid rgba(148,163,184,0.16);
           padding:20px; background:rgba(148,163,184,0.03);
-          transition:all 0.3s ease; position:relative; overflow:hidden;
+          transition:all 0.25s ease; position:relative; overflow:hidden;
         }
-        .proj-card::before {
-          content:''; position:absolute; inset:0;
-          background:linear-gradient(135deg,rgba(99,102,241,0.04) 0%,transparent 60%);
-          opacity:0; transition:opacity 0.3s ease;
-        }
-        .proj-card:hover { border-color:rgba(99,102,241,0.3); box-shadow:0 8px 32px rgba(99,102,241,0.12); transform:translateY(-2px); }
-        .proj-card:hover::before { opacity:1; }
-        .dark .proj-card { background:rgba(255,255,255,0.02); border-color:rgba(255,255,255,0.06); }
-        .dark .proj-card:hover { border-color:rgba(99,102,241,0.4); box-shadow:0 8px 32px rgba(99,102,241,0.2); }
-        .skill-card { border-radius:10px; border:1px solid rgba(148,163,184,0.12); padding:16px; background:rgba(148,163,184,0.02); transition:border-color 0.2s; }
-        .skill-card:hover { border-color:rgba(99,102,241,0.2); }
-        .dark .skill-card { background:rgba(255,255,255,0.02); border-color:rgba(255,255,255,0.05); }
+        .proj-card:hover { border-color:rgba(59,130,246,0.35); box-shadow:0 12px 32px rgba(59,130,246,0.12); transform:translateY(-2px); }
+        .dark .proj-card { background:#0D1220; border-color:rgba(148,163,184,0.15); }
+        .dark .proj-card:hover { border-color:rgba(59,130,246,0.45); box-shadow:0 12px 32px rgba(59,130,246,0.16); }
+        .skill-card { border-radius:12px; border:1px solid rgba(148,163,184,0.15); padding:16px; background:rgba(148,163,184,0.03); transition:border-color 0.2s; }
+        .skill-card:hover { border-color:rgba(59,130,246,0.35); }
+        .dark .skill-card { background:#0D1220; border-color:rgba(148,163,184,0.15); }
         .feat-chip {
           display:inline-flex; align-items:center; gap:4px; padding:3px 9px;
           border-radius:20px; font-size:11px; font-weight:500;
-          background:rgba(99,102,241,0.08); color:#6366f1; border:1px solid rgba(99,102,241,0.15); transition:all 0.15s;
+          background:rgba(59,130,246,0.08); color:#2563eb; border:1px solid rgba(59,130,246,0.2); transition:all 0.15s;
         }
-        .feat-chip:hover { background:rgba(99,102,241,0.15); border-color:rgba(99,102,241,0.3); }
-        .dark .feat-chip { background:rgba(99,102,241,0.12); color:#a5b4fc; border-color:rgba(99,102,241,0.2); }
-        .entry-card { padding:16px; border-radius:12px; border:1px solid rgba(148,163,184,0.12); background:rgba(148,163,184,0.025); transition:border-color 0.2s, background 0.2s; }
-        .entry-card:hover { border-color:rgba(99,102,241,0.2); background:rgba(99,102,241,0.02); }
-        .dark .entry-card { background:rgba(255,255,255,0.015); border-color:rgba(255,255,255,0.05); }
-        .dark .entry-card:hover { border-color:rgba(99,102,241,0.3); background:rgba(99,102,241,0.05); }
+        .dark .feat-chip { background:rgba(59,130,246,0.12); color:#22D3EE; border-color:rgba(59,130,246,0.25); }
+        .entry-card { padding:16px; border-radius:12px; border:1px solid rgba(148,163,184,0.15); background:rgba(148,163,184,0.03); transition:border-color 0.2s, background 0.2s; }
+        .entry-card:hover { border-color:rgba(59,130,246,0.35); }
+        .dark .entry-card { background:#0D1220; border-color:rgba(148,163,184,0.15); }
+        .dark .entry-card:hover { border-color:rgba(34,211,238,0.4); }
       `}} />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 screen-resume">
-        <div className="glass-card border border-slate-200 dark:border-white/5 p-8 md:p-12 shadow-2xl resume-container text-slate-800 dark:text-gray-200 mt-6">
+        {/* Resume Intro Banner */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <span className="section-kicker">ATS-Ready Curriculum Vitae</span>
+            <h2 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-slate-900 dark:text-[#F8FAFC]">
+              Resume &amp; <span className="text-glow-gradient">Credentials</span>
+            </h2>
+          </div>
+          <button
+            onClick={handlePrint}
+            className="glow-btn inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] transition hover:-translate-y-0.5 clickable"
+          >
+            <FaPrint /> Download / Print Resume
+          </button>
+        </div>
+
+        <div className="glass-card glow-border p-8 md:p-12 shadow-2xl resume-container text-slate-800 dark:text-[#F8FAFC]">
 
           {/* ── Screen Header ── */}
-          <div className="border-b border-slate-200 dark:border-white/10 pb-6 mb-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
+          <div className="border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)] pb-6 mb-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight">
+              <h1 className="text-4xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                 {personal?.name || "SRIDHARSHAN M N"}
               </h1>
-              <p className="text-base text-brand-indigo dark:text-brand-cyan font-extrabold tracking-wider uppercase mt-1">
-                Java Full Stack Developer
+              <p className="text-base text-[#3B82F6] dark:text-[#22D3EE] font-bold tracking-wider uppercase mt-1">
+                {personal?.designations?.[0] || "Java Full Stack Developer"}
               </p>
             </div>
             <div className="text-sm space-y-2 flex flex-col items-center md:items-end font-medium">
-              <a href={`tel:${personal?.phone}`} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-indigo dark:hover:text-brand-cyan transition-colors duration-300">
-                <FaPhoneAlt className="text-brand-indigo dark:text-brand-cyan text-xs shrink-0" />
+              <a href={`tel:${personal?.phone}`} className="flex items-center gap-2 text-slate-600 dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#22D3EE] transition-colors duration-300">
+                <FaPhoneAlt className="text-[#3B82F6] dark:text-[#22D3EE] text-xs shrink-0" />
                 <span>{personal?.phone}</span>
               </a>
-              <a href={`mailto:${personal?.email}`} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-indigo dark:hover:text-brand-cyan transition-colors duration-300">
-                <FaEnvelope className="text-brand-indigo dark:text-brand-cyan text-xs shrink-0" />
+              <a href={`mailto:${personal?.email}`} className="flex items-center gap-2 text-slate-600 dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#22D3EE] transition-colors duration-300">
+                <FaEnvelope className="text-[#3B82F6] dark:text-[#22D3EE] text-xs shrink-0" />
                 <span>{personal?.email}</span>
               </a>
-              <a href={personal?.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-indigo dark:hover:text-brand-cyan transition-colors duration-300">
-                <FaGithub className="text-brand-indigo dark:text-brand-cyan text-xs shrink-0" />
+              <a href={personal?.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#22D3EE] transition-colors duration-300">
+                <FaGithub className="text-[#3B82F6] dark:text-[#22D3EE] text-xs shrink-0" />
                 <span>{personal?.github?.replace(/^https?:\/\/(www\.)?/, "") || "github.com/sridharshan19"}</span>
               </a>
-              <a href={personal?.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-indigo dark:hover:text-brand-cyan transition-colors duration-300">
-                <FaLinkedin className="text-brand-indigo dark:text-brand-cyan text-xs shrink-0" />
+              <a href={personal?.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#22D3EE] transition-colors duration-300">
+                <FaLinkedin className="text-[#3B82F6] dark:text-[#22D3EE] text-xs shrink-0" />
                 <span>{personal?.linkedin?.replace(/^https?:\/\/(www\.)?/, "") || "linkedin.com"}</span>
               </a>
             </div>
@@ -682,18 +688,18 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Education ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Education</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Education</h2>
             <div className="space-y-3">
               {education?.map((edu, idx) => (
                 <div key={idx} className="entry-card flex justify-between items-start gap-4">
                   <div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white">{edu.institution}</h3>
-                    <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{edu.degree}</p>
-                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-1 font-medium">{edu.details}</p>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">{edu.institution}</h3>
+                    <p className="text-xs text-[#3B82F6] dark:text-[#22D3EE] font-semibold mt-0.5">{edu.degree}</p>
+                    <p className="text-xs text-slate-500 dark:text-[#94A3B8] mt-1 font-medium">{edu.details}</p>
                   </div>
                   <div className="text-right text-xs flex-shrink-0">
-                    <span className="font-bold text-slate-600 dark:text-gray-300 block">{edu.period}</span>
-                    <span className="font-bold text-brand-indigo dark:text-brand-cyan mt-1 block">{edu.score}</span>
+                    <span className="font-bold text-slate-600 dark:text-[#F8FAFC] block">{edu.period}</span>
+                    <span className="font-bold text-[#3B82F6] dark:text-[#22D3EE] mt-1 block">{edu.score}</span>
                   </div>
                 </div>
               ))}
@@ -702,23 +708,23 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Internships ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Internships</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Internships</h2>
             <div className="space-y-4">
               {internships?.map((intern, idx) => (
                 <div key={idx} className="entry-card">
                   <div className="flex justify-between items-start gap-4 mb-3">
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">{intern.role}</h3>
-                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{intern.company}</p>
+                      <h3 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">{intern.role}</h3>
+                      <p className="text-xs text-[#3B82F6] dark:text-[#22D3EE] font-semibold mt-0.5">{intern.company}</p>
                     </div>
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-brand-indigo/10 dark:bg-brand-indigo/20 text-brand-indigo dark:text-brand-cyan flex-shrink-0">
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-[#3B82F6]/10 border border-[#3B82F6]/25 text-[#3B82F6] dark:text-[#22D3EE] flex-shrink-0">
                       {intern.year} · {intern.duration}
                     </span>
                   </div>
                   <ul className="space-y-1.5">
                     {intern.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-gray-400 leading-relaxed font-medium">
-                        <span className="text-brand-indigo dark:text-brand-cyan mt-0.5 flex-shrink-0">▸</span>{bullet}
+                      <li key={bIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-[#94A3B8] leading-relaxed font-medium">
+                        <span className="text-[#3B82F6] dark:text-[#22D3EE] mt-0.5 flex-shrink-0">▸</span>{bullet}
                       </li>
                     ))}
                   </ul>
@@ -729,21 +735,29 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Projects ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Projects</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Projects</h2>
             <div className="space-y-4">
               {projects?.map((proj, idx) => (
                 <div key={idx} className="proj-card">
-                  <div className="flex justify-between items-start gap-4 mb-2 relative z-10">
+                  <div className="flex flex-wrap justify-between items-start gap-3 mb-2 relative z-10">
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">{proj.title}</h3>
-                      <p className="text-xs text-brand-indigo dark:text-brand-cyan font-semibold mt-0.5">{proj.tagline}</p>
+                      <h3 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">{proj.title}</h3>
+                      <p className="text-xs text-[#3B82F6] dark:text-[#22D3EE] font-semibold mt-0.5">{proj.tagline}</p>
                     </div>
-                    <a href={proj.github} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-800 dark:bg-white/10 text-white hover:bg-brand-indigo dark:hover:bg-brand-indigo transition-colors flex-shrink-0 relative z-10">
-                      <FaGithub /> GitHub
-                    </a>
+                    <div className="flex items-center gap-2">
+                      {proj.demo && proj.demo !== "#" && (
+                        <a href={proj.demo} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white hover:opacity-95 transition flex-shrink-0 relative z-10">
+                          <FaExternalLinkAlt className="text-[10px]" /> Demo
+                        </a>
+                      )}
+                      <a href={proj.github} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 dark:border-[rgba(148,163,184,0.2)] bg-slate-800 dark:bg-[#111827] text-white hover:border-[#22D3EE]/50 transition-colors flex-shrink-0 relative z-10">
+                        <FaGithub /> GitHub
+                      </a>
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed mb-3 font-medium relative z-10">{proj.description}</p>
+                  <p className="text-xs text-slate-600 dark:text-[#94A3B8] leading-relaxed mb-3 font-medium relative z-10">{proj.description}</p>
                   <div className="flex flex-wrap gap-1.5 mb-3 relative z-10">
                     {proj.features.map((feat, fIdx) => (
                       <span key={fIdx} className="feat-chip">• {feat}</span>
@@ -764,15 +778,15 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Achievements ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Achievements</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Achievements</h2>
             <div className="space-y-3">
               {achievements?.map((ach, idx) => (
                 <div key={idx} className="entry-card flex justify-between items-start gap-4">
                   <div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white">{ach.title}</h3>
-                    <p className="text-xs text-slate-600 dark:text-gray-400 mt-1 font-medium">{ach.description}</p>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">{ach.title}</h3>
+                    <p className="text-xs text-slate-600 dark:text-[#94A3B8] mt-1 font-medium">{ach.description}</p>
                   </div>
-                  <span className="font-bold text-brand-indigo dark:text-brand-cyan text-xs flex-shrink-0">{ach.year}</span>
+                  <span className="font-bold text-[#3B82F6] dark:text-[#22D3EE] text-xs flex-shrink-0">{ach.year}</span>
                 </div>
               ))}
             </div>
@@ -780,7 +794,7 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Skills (icon chips) ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Skills</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Skills</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 { label: "Programming Languages", items: skills?.programming },
@@ -791,7 +805,7 @@ export default function Resume({ personal, education, internships, projects, ski
                 { label: "Deployment",             items: skills?.deployment },
               ].map(({ label, items }) => (
                 <div key={label} className="skill-card">
-                  <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2.5">{label}</p>
+                  <p className="text-[10px] font-bold text-slate-500 dark:text-[#94A3B8] uppercase tracking-wider mb-2.5">{label}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {items?.map((s) => (
                       <span key={s.name} className="tech-chip">
@@ -807,18 +821,18 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Coding Profiles ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Coding Profiles</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Coding Profiles</h2>
             <div className="space-y-3">
               {codingProfiles?.map((plat, idx) => (
                 <div key={idx} className="entry-card flex justify-between items-center gap-4">
                   <div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white">{plat.platform}</h3>
-                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5 font-medium">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">{plat.platform}</h3>
+                    <p className="text-xs text-slate-500 dark:text-[#94A3B8] mt-0.5 font-medium">
                       {plat.solved} Solved &nbsp;·&nbsp; {plat.rating} &nbsp;·&nbsp; {plat.globalRank}
                     </p>
                   </div>
                   <a href={plat.profileUrl} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-brand-indigo/30 text-brand-indigo dark:text-brand-cyan hover:bg-brand-indigo hover:text-white dark:hover:bg-brand-indigo transition-colors flex-shrink-0">
+                    className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-[#3B82F6]/30 text-[#3B82F6] dark:text-[#22D3EE] hover:bg-[#3B82F6] hover:text-white transition-colors flex-shrink-0">
                     Profile <FaExternalLinkAlt className="text-[9px]" />
                   </a>
                 </div>
@@ -828,15 +842,15 @@ export default function Resume({ personal, education, internships, projects, ski
 
           {/* ── Screen Certifications ── */}
           <div className="mb-8">
-            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-4 pb-1.5 border-b border-slate-200 dark:border-white/10">Certifications</h2>
+            <h2 className="text-xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-4 pb-1.5 border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)]">Certifications</h2>
             <div className="space-y-2">
               {certifications?.map((cert, idx) => (
                 <div key={idx} className="entry-card grid grid-cols-[1fr_auto_auto] gap-4 items-center text-xs">
-                  <strong className="text-slate-800 dark:text-white font-semibold">{cert.title}</strong>
-                  <span className="text-slate-600 dark:text-slate-300 font-semibold whitespace-nowrap">
+                  <strong className="text-slate-800 dark:text-[#F8FAFC] font-semibold">{cert.title}</strong>
+                  <span className="text-slate-600 dark:text-[#94A3B8] font-semibold whitespace-nowrap">
                     {cert.provider}
                   </span>
-                  <span className="font-bold text-slate-500 dark:text-gray-400 text-right whitespace-nowrap">{cert.year}</span>
+                  <span className="font-bold text-slate-500 dark:text-[#94A3B8] text-right whitespace-nowrap">{cert.year}</span>
                 </div>
               ))}
             </div>
@@ -852,10 +866,10 @@ export default function Resume({ personal, education, internships, projects, ski
 function getTechColor(name = "") {
   const c = {
     "Java":"#f89820","C":"#555591","Python":"#3776ab","JavaScript":"#f7df1e",
-    "HTML":"#e34f26","CSS":"#1572b6","React":"#61dafb","React 19":"#61dafb","React.js":"#61dafb",
-    "Tailwind":"#06b6d4","Tailwind CSS":"#06b6d4","Bootstrap":"#7952b3",
+    "HTML":"#e34f26","CSS":"#1572b6","React":"#61dafb","React 19":"#61dafb","React.js":"#61dafb","Next.js":"#ffffff","TypeScript":"#3178c6",
+    "Tailwind":"#06b6d4","Tailwind CSS":"#06b6d4",
     "Node":"#339933","Node.js":"#339933","Express":"#4a4a4a","Express.js":"#4a4a4a",
-    "Spring Boot":"#6db33f","Spring Boot 3":"#6db33f","Spring Boot 3.3":"#6db33f","Spring Security":"#6db33f","MongoDB":"#47a248","MySQL":"#4479a1",
+    "Spring Boot":"#6db33f","Spring Boot 3":"#6db33f","Spring Boot 3.3":"#6db33f","Spring Security":"#6db33f","Spring Data JPA":"#6db33f","Hibernate":"#bcae79","MongoDB":"#47a248","MySQL":"#4479a1",
     "Git":"#f05032","GitHub":"#6e40c9","VS Code":"#007acc","Postman":"#ff6c37",
     "Canva":"#00c4cc","Vite":"#646cff","Render":"#46e3b7","Vercel":"#888888",
     "Railway":"#555555","Recharts":"#8884d8","JWT":"#d63aff","JWT Security":"#d63aff",

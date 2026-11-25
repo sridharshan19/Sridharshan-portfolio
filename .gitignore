@@ -15,6 +15,7 @@ dist/
 .env.production.local
 client/.env
 server/.env
+server/data/messages.json
 
 # IDE / System files
 .vscode/

@@ -1,135 +1,219 @@
-import React from "react";
-import { FaGraduationCap, FaLaptopCode, FaTrophy, FaBriefcase, FaCode } from "react-icons/fa";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FaBriefcase, FaChevronDown, FaChevronUp, FaLaptopCode, FaTrophy } from "react-icons/fa";
+
+const EXPERIENCE_POSTS = [
+  {
+    id: "rv-techlearn",
+    category: "Internship",
+    title: "MERN Stack Intern",
+    subtitle: "RV Techlearn Institute",
+    badge: "2025 · 17 Days",
+    preview:
+      "Hands-on full-stack training across MongoDB, Express.js, React.js, and Node.js with project-based API integration.",
+    details:
+      "Built responsive React user interfaces connected to RESTful Express/Node services, practiced MongoDB schema modeling and CRUD operations, and sharpened full-stack debugging workflows."
+  },
+  {
+    id: "rampex",
+    category: "Internship",
+    title: "Java Full Stack Developer Intern",
+    subtitle: "RAMPeX Technologies",
+    badge: "2025 · 15 Days",
+    preview:
+      "Developed full-stack web applications using React for the frontend and Spring Boot with MySQL on the backend.",
+    details:
+      "Designed modular REST APIs with JWT authentication, database persistence in MySQL, and reusable React UI components following clean full-stack architecture."
+  }
+];
+
+const ARCHITECTURE_POSTS = [
+  {
+    id: "worksphere",
+    category: "Architecture",
+    title: "WorkSphere HRMS — Enterprise Workforce Platform",
+    subtitle: "React 19 · Spring Boot 3 · MongoDB · JWT Security",
+    preview:
+      "Enterprise-grade HR operations suite unifying 5-tier dynamic RBAC, automated shift attendance, and payroll processing.",
+    details:
+      "Architected role-based access control across 5 permission tiers, automated shift punctuality calculations, monthly payroll PDF payslip generation, hardware asset lifecycle tracking, employee messaging, and an AI HR Copilot."
+  },
+  {
+    id: "tracknest",
+    category: "SaaS & Backend",
+    title: "TrackNest — Smart Subscription & Expense Manager",
+    subtitle: "React 19 · Spring Boot 3.3 · MongoDB · Docker · Twilio SMS",
+    preview:
+      "Multi-container financial platform with dual-token JWT authentication, Recharts gauges, and automated renewal alerts.",
+    details:
+      "Implemented stateless access/refresh token rotation with Spring Security, scheduled daily Spring cron jobs dispatching renewal alerts via Twilio SMS and email, category spending thresholds, and Docker Compose + Nginx deployment."
+  },
+  {
+    id: "nextgen",
+    category: "Full Stack",
+    title: "NextGen Resume Builder — Dynamic CV Platform",
+    subtitle: "Spring Boot · React · MySQL · Google OAuth · Razorpay",
+    preview:
+      "Dynamic resume creator featuring responsive ATS templates, auto-save state, Google OAuth 2.0, and Razorpay checkout.",
+    details:
+      "Combined real-time template previews with auto-saved state persistence in MySQL, seamless Google OAuth single sign-on, Razorpay premium payment verification, and high-resolution PDF export."
+  }
+];
+
+const MILESTONE_POSTS = [
+  {
+    id: "sece-hackathon",
+    category: "Hackathon",
+    title: "Career Readiness Hackathon — First Prize",
+    subtitle: "Sri Eshwar College of Engineering (2026)",
+    preview:
+      "Secured First Prize by designing, architecting, and shipping an industry-grade project within a 24-hour sprint.",
+    details:
+      "Collaborated under tight 24-hour constraints to define the problem scope, build full-stack APIs and frontend flows, and present a working production-minded solution to judges."
+  },
+  {
+    id: "intellina",
+    category: "Hackathon",
+    title: "INTELLINA Hackathon Finalist",
+    subtitle: "Coimbatore Institute of Technology (2025)",
+    preview:
+      "Shortlisted as a national finalist for building a web-based mentor-student progress tracker application.",
+    details:
+      "Designed structured workflows helping faculty monitor student academic milestones, mentorship feedback, and activity submissions in one dashboard."
+  },
+  {
+    id: "dsa-journey",
+    category: "Competitive Coding",
+    title: "Competitive Problem Solving Trajectory",
+    subtitle: "LeetCode & SkillRack Platforms",
+    preview:
+      "Solved 300+ problems on LeetCode (Contest Rating 1579) and 400+ problems on SkillRack (Silver / Gold Badges).",
+    details:
+      "Practiced arrays, trees, graphs, dynamic programming, and greedy optimization consistently in Java and JavaScript to improve time and space complexity."
+  }
+];
+
+function BlogCard({ post }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.article
+      className="glass-card glow-border p-6 flex flex-col justify-between"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.4 }}
+      whileHover={{ y: -3 }}
+    >
+      <div>
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#3B82F6] dark:text-[#22D3EE]">
+            {post.category}
+          </span>
+          {post.badge && (
+            <span className="text-[11px] font-semibold text-[#94A3B8]">{post.badge}</span>
+          )}
+        </div>
+
+        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-[#F8FAFC]">
+          {post.title}
+        </h3>
+        <p className="text-xs font-semibold text-[#8B5CF6] dark:text-[#22D3EE] mt-1 mb-3">
+          {post.subtitle}
+        </p>
+
+        <p className="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-[#94A3B8]">
+          {post.preview}
+        </p>
+
+        {expanded && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="mt-3 pt-3 border-t border-slate-200 dark:border-[rgba(148,163,184,0.15)] text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-[#F8FAFC]/90"
+          >
+            {post.details}
+          </motion.p>
+        )}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setExpanded((prev) => !prev)}
+        className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3B82F6] dark:text-[#22D3EE] hover:underline self-start clickable"
+      >
+        {expanded ? (
+          <>
+            Show Less <FaChevronUp className="text-[10px]" />
+          </>
+        ) : (
+          <>
+            Read More <FaChevronDown className="text-[10px]" />
+          </>
+        )}
+      </button>
+    </motion.article>
+  );
+}
 
 export default function Blog() {
   return (
-    <div className="max-w-5xl mx-auto py-12 px-6 space-y-16">
-      {/* Header Banner */}
-      <div className="text-center md:text-left">
-        <span className="section-kicker">📖 Articles & Journey</span>
-        <h1 className="mt-2 text-4xl md:text-5xl font-display font-extrabold text-slate-950 dark:text-white tracking-tight">
-          Developer <span className="text-glow-gradient">Stories & Highlights</span>
+    <div className="section-container py-12 space-y-14">
+      <div className="max-w-3xl">
+        <span className="section-kicker">Articles &amp; Journey</span>
+        <h1 className="section-heading">
+          Developer <span className="text-glow-gradient">Stories &amp; Case Studies</span>
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl font-medium">
-          Detailed insights into my full-stack engineering internships, competitive programming trajectory, hackathon achievements, and major architecture projects.
+        <p className="section-subtitle">
+          Notes from my full-stack engineering internships, system architecture builds, hackathons, and competitive programming practice.
         </p>
       </div>
 
-      {/* PROFESSIONAL EXPERIENCE SECTION */}
       <section className="space-y-6">
         <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-indigo/10 text-brand-indigo dark:text-brand-cyan text-lg">
+          <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#3B82F6] dark:text-[#22D3EE]">
             <FaBriefcase />
           </div>
-          <h2 className="text-2xl font-display font-extrabold text-slate-950 dark:text-white">
-            Professional Experience Writeups
+          <h2 className="text-2xl font-display font-bold text-slate-950 dark:text-[#F8FAFC]">
+            Internship Writeups
           </h2>
         </div>
-
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Experience 1 */}
-          <div className="glass-card glow-border p-7 rounded-2xl border border-slate-200 dark:border-white/10 flex flex-col justify-between hover:border-brand-indigo/30 transition-all duration-300">
-            <div>
-              <div className="flex justify-between items-start gap-4 mb-3">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">MERN Stack Intern</h3>
-                  <p className="text-xs font-bold text-brand-indigo dark:text-brand-cyan mt-1">RV Techlearn Institute</p>
-                </div>
-                <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  2025
-                </span>
-              </div>
-              <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-                Gained hands-on experience in developing full-stack web applications using <strong>MongoDB, Express.js, React.js, and Node.js</strong>. Developed skills in frontend and backend development through project-based learning, real-time implementation, and RESTful API integration.
-              </p>
-            </div>
-          </div>
-
-          {/* Experience 2 */}
-          <div className="glass-card glow-border p-7 rounded-2xl border border-slate-200 dark:border-white/10 flex flex-col justify-between hover:border-brand-purple/30 transition-all duration-300">
-            <div>
-              <div className="flex justify-between items-start gap-4 mb-3">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Java Full Stack Developer</h3>
-                  <p className="text-xs font-bold text-brand-purple dark:text-brand-cyan mt-1">RAMPeX Technologies</p>
-                </div>
-                <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  2025
-                </span>
-              </div>
-              <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-                Created full-stack web applications using <strong>React</strong> for the frontend and <strong>Spring Boot 3</strong> for the backend. Designed RESTful APIs, managed state, and implemented <strong>JWT authentication with role-based access control</strong> and MySQL integration.
-              </p>
-            </div>
-          </div>
+          {EXPERIENCE_POSTS.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
       </section>
 
-      {/* FEATURED ARCHITECTURE BREAKDOWN */}
       <section className="space-y-6">
         <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-cyan/10 text-brand-cyan text-lg">
+          <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#8B5CF6]/30 bg-[#8B5CF6]/10 text-[#8B5CF6]">
             <FaLaptopCode />
           </div>
-          <h2 className="text-2xl font-display font-extrabold text-slate-950 dark:text-white">
+          <h2 className="text-2xl font-display font-bold text-slate-950 dark:text-[#F8FAFC]">
             Architecture Case Studies
           </h2>
         </div>
-
-        <div className="grid gap-6">
-          <div className="glass-card p-8 rounded-2xl border border-slate-200 dark:border-white/10">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">LeaveMate — Workflow Automation</h3>
-            <p className="text-xs font-extrabold text-brand-indigo dark:text-brand-cyan mb-3 uppercase tracking-wider">MERN Stack • MongoDB • Express.js • React.js • Node.js</p>
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-              A simplified leave management application that automates and streamlines employee leave applications, approval hierarchies, and department statistics. Users can apply for leaves effortlessly while managers approve requests via visual dashboards.
-            </p>
-          </div>
-
-          <div className="glass-card p-8 rounded-2xl border border-slate-200 dark:border-white/10">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Event Insight — Anonymous Feedback Engine</h3>
-            <p className="text-xs font-extrabold text-brand-purple dark:text-brand-cyan mb-3 uppercase tracking-wider">MERN Stack • Time-Locked Confidential Feedback</p>
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-              An anonymous feedback management system built with MERN Stack. Attendees provide candid feedback to event organizers during conferences, with feedback contents encrypted and unlocked exclusively on the event's final day.
-            </p>
-          </div>
-
-          <div className="glass-card p-8 rounded-2xl border border-slate-200 dark:border-white/10">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">NextGen Resume Builder — SaaS Platform</h3>
-            <p className="text-xs font-extrabold text-brand-teal mb-3 uppercase tracking-wider">Spring Boot • React.js • JWT • Razorpay</p>
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-              A comprehensive resume builder with Live Preview and Custom ATS Templates. Features user authentication with JWT, profile image uploads, client-side PDF rendering, and Razorpay payment gateway integration.
-            </p>
-          </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {ARCHITECTURE_POSTS.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
       </section>
 
-      {/* ACHIEVEMENTS & COMPETITIVE PROGRAMMING */}
       <section className="space-y-6">
         <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-500 text-lg">
+          <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#22D3EE]/30 bg-[#22D3EE]/10 text-[#22D3EE]">
             <FaTrophy />
           </div>
-          <h2 className="text-2xl font-display font-extrabold text-slate-950 dark:text-white">
-            Hackathons & Coding Milestones
+          <h2 className="text-2xl font-display font-bold text-slate-950 dark:text-[#F8FAFC]">
+            Hackathons &amp; Coding Milestones
           </h2>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="glass-card p-6 rounded-2xl border border-slate-200 dark:border-white/10">
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">INTELLINA Hackathon Finalist</h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-bold mb-3">Coimbatore Institute of Technology (CIT)</p>
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-              Selected as a national finalist for designing a web-based mentor-student progress tracker helping faculty monitor academic trajectory and activity submissions.
-            </p>
-          </div>
-
-          <div className="glass-card p-6 rounded-2xl border border-slate-200 dark:border-white/10">
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Competitive Problem Solving</h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-bold mb-3">LeetCode & SkillRack Platforms</p>
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
-              Solved 300+ problems on LeetCode (Contest Rating 1579) and 400+ problems on SkillRack (Gold Badge Rank), demonstrating algorithmic proficiency in Java and JavaScript.
-            </p>
-          </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {MILESTONE_POSTS.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
       </section>
     </div>

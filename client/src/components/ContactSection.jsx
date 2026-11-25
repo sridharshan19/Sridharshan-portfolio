@@ -8,33 +8,33 @@ export default function ContactSection({ personal }) {
 
   const contacts = [
     {
-      icon: <FaEnvelope className="text-brand-pink" />,
+      icon: <FaEnvelope className="text-[#3B82F6] dark:text-[#22D3EE]" />,
       title: "Email",
       value: personal.email,
       href: `mailto:${personal.email}`,
-      color: "hover:border-brand-pink/30"
+      color: "hover:border-[#3B82F6]/40"
     },
     {
-      icon: <FaPhoneAlt className="text-brand-teal" />,
+      icon: <FaPhoneAlt className="text-[#22D3EE]" />,
       title: "Phone / WhatsApp",
       value: personal.phone,
       href: `tel:${personal.phone}`,
-      color: "hover:border-brand-teal/30"
+      color: "hover:border-[#22D3EE]/40"
     },
     {
-      icon: <FaMapMarkerAlt className="text-brand-purple" />,
+      icon: <FaMapMarkerAlt className="text-[#8B5CF6]" />,
       title: "Location",
       value: "Tamil Nadu, India",
       href: "https://maps.google.com/?q=Tamil+Nadu,+India",
-      color: "hover:border-brand-purple/30"
+      color: "hover:border-[#8B5CF6]/40"
     }
   ];
 
   return (
     <section id="contact" className="section-shell">
       {/* Background radial gradients */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[420px] h-[420px] bg-[#3B82F6]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[380px] h-[380px] bg-[#8B5CF6]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="section-container">
         {/* Title */}
@@ -65,14 +65,14 @@ export default function ContactSection({ personal }) {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-2xl bg-slate-100 dark:bg-white/5 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-200 dark:border-white/10 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-xl bg-slate-100 dark:bg-[#0D1220] w-12 h-12 rounded-xl flex items-center justify-center border border-slate-200 dark:border-[rgba(148,163,184,0.15)] group-hover:scale-105 transition-transform duration-300">
                     {item.icon}
                   </span>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-0.5">
+                    <h4 className="text-xs font-bold text-slate-500 dark:text-[#94A3B8] uppercase tracking-widest mb-0.5">
                       {item.title}
                     </h4>
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-brand-purple transition-colors duration-300">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-[#F8FAFC] group-hover:text-[#3B82F6] dark:group-hover:text-[#22D3EE] transition-colors duration-300">
                       {item.value}
                     </p>
                   </div>
@@ -112,13 +112,13 @@ export default function ContactSection({ personal }) {
               </svg>
 
               <div className="relative z-10 text-center flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mb-3 animate-pulse">
-                  <FaMapMarkerAlt className="text-brand-purple text-lg" />
+                <div className="w-10 h-10 rounded-full bg-[#8B5CF6]/20 border border-[#8B5CF6]/30 flex items-center justify-center mb-3 animate-pulse">
+                  <FaMapMarkerAlt className="text-[#8B5CF6] text-lg" />
                 </div>
-                <h4 className="text-sm font-display font-bold text-slate-900 dark:text-white mb-1">
+                <h4 className="text-sm font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-1">
                   Based in Tamil Nadu, India
                 </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs leading-relaxed font-medium">
+                <p className="text-xs text-slate-500 dark:text-[#94A3B8] max-w-xs leading-relaxed font-medium">
                   Available for remote cooperation worldwide and on-site opportunities.
                 </p>
               </div>
@@ -133,14 +133,14 @@ export default function ContactSection({ personal }) {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-[#F8FAFC] mb-2">
               Send a <span className="text-glow-gradient">Message</span>
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-8">
+            <p className="text-xs text-slate-500 dark:text-[#94A3B8] font-semibold uppercase tracking-wider mb-8">
               Fill out the form below to initiate communication
             </p>
             
-            <ContactForm />
+            <ContactForm recipientEmail={personal.email} />
           </motion.div>
         </div>
       </div>

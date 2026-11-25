@@ -9,6 +9,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
+    { to: "/skills", label: "Skills" },
     { to: "/projects", label: "Projects" },
     { to: "/resume", label: "Resume" },
     { to: "/blog", label: "Blog" },
@@ -16,73 +17,99 @@ export default function Navbar({ darkMode, setDarkMode }) {
   ];
 
   const linkClass = ({ isActive }) =>
-    `relative rounded-full px-4 py-2 text-sm font-extrabold transition clickable ${isActive
-      ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950"
-      : "text-slate-600 hover:bg-slate-900/5 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+    `relative rounded-lg px-3.5 py-2 text-xs font-semibold tracking-wide transition-all duration-200 clickable ${
+      isActive
+        ? "bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-[0_0_18px_rgba(59,130,246,0.3)]"
+        : "text-slate-600 hover:text-slate-950 hover:bg-slate-900/5 dark:text-[#94A3B8] dark:hover:text-[#F8FAFC] dark:hover:bg-white/5"
     }`;
 
   return (
     <motion.nav
-      className="glass-navbar fixed left-0 top-0 z-50 w-full"
-      initial={{ y: -90, opacity: 0 }}
+      className="glass-navbar sticky top-0 z-50 w-full"
+      initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.55 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        <Link to="/" className="flex items-center gap-3 clickable" onClick={() => setIsOpen(false)}>
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 text-white shadow-lg shadow-brand-indigo/15 dark:bg-white dark:text-slate-950">
-            <span className="font-display text-xl font-black">S</span>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3.5">
+        {/* Left: Brand Initials & Name */}
+        <Link
+          to="/"
+          className="flex items-center gap-3 group clickable"
+          onClick={() => setIsOpen(false)}
+        >
+          <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-transform duration-300 group-hover:scale-105">
+            <span className="font-display text-lg font-bold tracking-tight">S</span>
           </div>
           <div>
-            <h1 className="font-display text-base font-black leading-none tracking-tight text-slate-950 dark:text-white">
-              SRIDHARSHAN
-            </h1>
-            <p className="mt-1 text-[10px] font-black uppercase tracking-[0.24em] text-brand-indigo dark:text-brand-cyan">
-              FULL STACK
-            </p>
+            <span className="block font-display text-sm sm:text-base font-bold leading-none tracking-tight text-slate-950 dark:text-[#F8FAFC]">
+              SRIDHARSHAN M N
+            </span>
+            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.22em] text-[#3B82F6] dark:text-[#22D3EE]">
+              Full Stack Developer
+            </span>
           </div>
         </Link>
 
-        <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-white/50 p-1 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 md:flex">
-          {navLinks.map((link) => (
-            <NavLink key={link.to} to={link.to} className={linkClass}>
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-
+        {/* Right: Desktop Navigation Links + Theme Toggle */}
         <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-1 rounded-xl border border-slate-200/80 bg-white/60 px-2 py-1.5 backdrop-blur-md dark:border-[rgba(148,163,184,0.15)] dark:bg-[#111827]/80">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) =>
+                  `relative rounded-lg px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all duration-200 clickable ${
+                    isActive
+                      ? "bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-[0_0_18px_rgba(59,130,246,0.35)]"
+                      : "text-slate-600 hover:text-slate-950 hover:bg-slate-200/60 dark:text-[#94A3B8] dark:hover:text-[#F8FAFC] dark:hover:bg-white/5"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
+
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-white/70 text-brand-indigo shadow-sm transition hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/5 dark:text-brand-cyan clickable"
-            aria-label="Toggle theme mode"
-            title="Toggle theme mode"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white/80 text-[#3B82F6] transition hover:border-[#3B82F6]/50 dark:border-[rgba(148,163,184,0.15)] dark:bg-[#111827] dark:text-[#22D3EE] dark:hover:border-[#22D3EE]/50 clickable"
+            aria-label="Toggle color theme"
+            title="Toggle color theme"
           >
-            {darkMode ? <FaSun /> : <FaMoon />}
+            {darkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
           </button>
 
           <button
             onClick={() => setIsOpen((value) => !value)}
-            className="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-white/70 text-slate-700 shadow-sm transition dark:border-white/10 dark:bg-white/5 dark:text-white md:hidden clickable"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white/80 text-slate-700 transition dark:border-[rgba(148,163,184,0.15)] dark:bg-[#111827] dark:text-[#F8FAFC] lg:hidden clickable"
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden border-t border-slate-200 bg-white/90 px-5 py-5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90"
+            className="lg:hidden border-t border-slate-200 bg-white/95 px-4 py-4 backdrop-blur-xl dark:border-[rgba(148,163,184,0.15)] dark:bg-[#0D1220]/95"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.22 }}
           >
-            <div className="grid gap-2">
+            <div className="grid gap-1.5">
               {navLinks.map((link) => (
-                <NavLink key={link.to} to={link.to} onClick={() => setIsOpen(false)} className={linkClass}>
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === "/"}
+                  onClick={() => setIsOpen(false)}
+                  className={linkClass}
+                >
                   {link.label}
                 </NavLink>
               ))}

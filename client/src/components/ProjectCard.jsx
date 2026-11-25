@@ -1,140 +1,170 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaJava, FaJs, FaReact, FaNodeJs, FaBootstrap, FaHtml5, FaCss3Alt, FaChartLine, FaCreditCard, FaLock, FaRobot, FaSms } from "react-icons/fa";
-import { SiSpringboot, SiMongodb, SiMysql, SiExpress, SiTailwindcss, SiVite, SiFramer, SiDocker } from "react-icons/si";
+import {
+  FaArrowRight,
+  FaChartLine,
+  FaCss3Alt,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaHtml5,
+  FaJava,
+  FaJs,
+  FaNodeJs,
+  FaReact,
+  FaRobot,
+  FaSms
+} from "react-icons/fa";
+import {
+  SiBrevo,
+  SiDocker,
+  SiExpress,
+  SiFramer,
+  SiGoogle,
+  SiJsonwebtokens,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiRazorpay,
+  SiSpringboot,
+  SiSpringsecurity,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite
+} from "react-icons/si";
 
 function getTechIcon(tech) {
   const t = tech.toLowerCase();
-  if (t.includes("java") && !t.includes("javascript")) return <FaJava className="text-red-500 text-xs" />;
-  if (t.includes("javascript") || t === "js") return <FaJs className="text-yellow-500 text-xs" />;
-  if (t.includes("react")) return <FaReact className="text-cyan-400 text-xs animate-spin-slow" style={{ animationDuration: "12s" }} />;
-  if (t.includes("springboot") || t.includes("spring boot") || t.includes("spring")) return <SiSpringboot className="text-green-500 text-xs" />;
-  if (t.includes("mysql")) return <SiMysql className="text-blue-500 text-xs" />;
-  if (t.includes("mongodb") || t === "mongo") return <SiMongodb className="text-green-600 text-xs" />;
-  if (t.includes("node")) return <FaNodeJs className="text-green-500 text-xs" />;
-  if (t.includes("express")) return <SiExpress className="text-slate-400 text-xs" />;
-  if (t.includes("tailwind")) return <SiTailwindcss className="text-cyan-500 text-xs" />;
-  if (t.includes("bootstrap")) return <FaBootstrap className="text-purple-600 text-xs" />;
-  if (t.includes("vite")) return <SiVite className="text-purple-500 text-xs" />;
+  if (t.includes("next")) return <SiNextdotjs className="text-slate-800 dark:text-[#F8FAFC] text-xs" />;
+  if (t.includes("typescript")) return <SiTypescript className="text-[#3B82F6] text-xs" />;
+  if (t.includes("java") && !t.includes("javascript")) return <FaJava className="text-orange-400 text-xs" />;
+  if (t.includes("javascript") || t === "js") return <FaJs className="text-yellow-400 text-xs" />;
+  if (t.includes("react")) return <FaReact className="text-[#22D3EE] text-xs" />;
+  if (t.includes("spring security")) return <SiSpringsecurity className="text-emerald-400 text-xs" />;
+  if (t.includes("spring")) return <SiSpringboot className="text-emerald-400 text-xs" />;
+  if (t.includes("mysql")) return <SiMysql className="text-[#3B82F6] text-xs" />;
+  if (t.includes("mongo")) return <SiMongodb className="text-emerald-400 text-xs" />;
+  if (t.includes("node")) return <FaNodeJs className="text-emerald-400 text-xs" />;
+  if (t.includes("express")) return <SiExpress className="text-slate-300 text-xs" />;
+  if (t.includes("tailwind")) return <SiTailwindcss className="text-[#22D3EE] text-xs" />;
+  if (t.includes("vite")) return <SiVite className="text-[#8B5CF6] text-xs" />;
   if (t.includes("html")) return <FaHtml5 className="text-orange-500 text-xs" />;
-  if (t.includes("css")) return <FaCss3Alt className="text-blue-500 text-xs" />;
-  if (t.includes("recharts")) return <FaChartLine className="text-blue-400 text-xs" />;
-  if (t.includes("razorpay")) return <FaCreditCard className="text-blue-600 text-xs" />;
-  if (t.includes("framer")) return <SiFramer className="text-pink-500 text-xs" />;
-  if (t.includes("jwt") || t.includes("security")) return <FaLock className="text-amber-400 text-xs" />;
-  if (t.includes("ai") || t.includes("copilot")) return <FaRobot className="text-indigo-400 text-xs" />;
-  if (t.includes("docker")) return <SiDocker className="text-blue-400 text-xs" />;
-  if (t.includes("twilio") || t.includes("sms")) return <FaSms className="text-red-500 text-xs" />;
+  if (t.includes("css")) return <FaCss3Alt className="text-[#3B82F6] text-xs" />;
+  if (t.includes("recharts")) return <FaChartLine className="text-[#3B82F6] text-xs" />;
+  if (t.includes("razorpay")) return <SiRazorpay className="text-[#3B82F6] text-xs" />;
+  if (t.includes("google")) return <SiGoogle className="text-rose-400 text-xs" />;
+  if (t.includes("brevo")) return <SiBrevo className="text-emerald-400 text-xs" />;
+  if (t.includes("framer")) return <SiFramer className="text-[#8B5CF6] text-xs" />;
+  if (t.includes("jwt") || t.includes("security")) return <SiJsonwebtokens className="text-amber-400 text-xs" />;
+  if (t.includes("ai") || t.includes("copilot")) return <FaRobot className="text-[#22D3EE] text-xs" />;
+  if (t.includes("docker")) return <SiDocker className="text-[#3B82F6] text-xs" />;
+  if (t.includes("twilio") || t.includes("sms")) return <FaSms className="text-rose-400 text-xs" />;
   return null;
 }
 
 export default function ProjectCard({ project, index, onSelect }) {
-  const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left - rect.width / 2;
-    const mouseY = e.clientY - rect.top - rect.height / 2;
-    setTilt({
-      x: -(mouseY / (rect.height / 2)) * 7,
-      y: (mouseX / (rect.width / 2)) * 7
-    });
-  };
+  const hasDemo = Boolean(project.demo && project.demo !== "#");
 
   return (
     <motion.article
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      className="glass-card glow-border group relative flex h-full flex-col overflow-hidden p-7 md:p-8"
-      style={{
-        transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: tilt.x === 0 ? "transform 0.45s ease" : "none"
-      }}
-      initial={{ opacity: 0, y: 36 }}
+      className="glass-card glow-border group relative flex h-full flex-col overflow-hidden"
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-120px" }}
-      transition={{ duration: 0.55, delay: index * 0.08 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      whileHover={{ y: -5 }}
     >
-      <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand-cyan/10 blur-2xl transition group-hover:bg-brand-pink/15" />
+      {/* Futuristic Visual Header / Banner */}
+      <div className="relative h-40 w-full overflow-hidden border-b border-slate-200 dark:border-[rgba(148,163,184,0.15)] bg-gradient-to-br from-[#0D1220] via-[#111827] to-[#151D2E] p-6">
+        <div className="grid-backdrop absolute inset-0 opacity-60 transition-transform duration-500 group-hover:scale-105" />
+        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#3B82F6]/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="pointer-events-none absolute -bottom-10 left-8 h-32 w-32 rounded-full bg-[#8B5CF6]/20 blur-2xl" />
 
-      <div className="relative z-10 flex items-start justify-between gap-4">
-        <div>
-          <span className="inline-flex rounded-full border border-brand-indigo/20 bg-brand-indigo/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-brand-indigo dark:text-brand-cyan">
-            {project.tagline}
-          </span>
-          <h3 className="mt-5 font-display text-2xl font-black tracking-tight text-slate-950 transition group-hover:text-brand-indigo dark:text-white dark:group-hover:text-brand-cyan">
-            {project.title}
-          </h3>
-        </div>
+        <div className="relative z-10 flex h-full flex-col justify-between">
+          <div className="flex items-center justify-between gap-3">
+            <span className="inline-flex items-center rounded-full border border-[#3B82F6]/35 bg-[#3B82F6]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#22D3EE]">
+              {project.tagline}
+            </span>
+            <span className="font-mono text-xs font-bold text-[#94A3B8]">
+              #{String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
 
-        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-slate-950 text-lg font-black text-white shadow-lg shadow-slate-950/10 dark:bg-white dark:text-slate-950">
-          {String(index + 1).padStart(2, "0")}
+          <div className="flex items-center gap-3.5">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[rgba(148,163,184,0.2)] bg-[#080B14]/90 text-2xl shadow-lg transition-transform duration-500 group-hover:scale-110">
+              {project.icon || "💻"}
+            </div>
+            <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-[#F8FAFC] transition-colors group-hover:text-[#22D3EE]">
+              {project.title}
+            </h3>
+          </div>
         </div>
       </div>
 
-      <p className="relative z-10 mt-5 text-sm leading-7 text-slate-600 dark:text-slate-400">
-        {project.description}
-      </p>
+      {/* Card Body */}
+      <div className="flex flex-1 flex-col p-6 md:p-7">
+        <p className="text-sm leading-relaxed text-slate-600 dark:text-[#94A3B8]">
+          {project.description}
+        </p>
 
-      <div className="relative z-10 mt-7">
-        <h4 className="mb-3 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-          Key features
-        </h4>
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {project.features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-teal" />
-              {feature}
-            </li>
+        <div className="mt-5">
+          <h4 className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-[#94A3B8]">
+            Key Capabilities
+          </h4>
+          <ul className="grid gap-1.5 sm:grid-cols-2">
+            {project.features.slice(0, 4).map((feature) => (
+              <li key={feature} className="flex items-start gap-2 text-xs font-medium text-slate-700 dark:text-[#F8FAFC]/90">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22D3EE]" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Tech Badges */}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-lg border border-slate-200 bg-slate-100/80 dark:border-[rgba(148,163,184,0.15)] dark:bg-[#0D1220] px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:text-[#94A3B8] flex items-center gap-1.5"
+            >
+              {getTechIcon(tech)}
+              {tech}
+            </span>
           ))}
-        </ul>
-      </div>
+        </div>
 
-      <div className="relative z-10 mt-8 flex flex-wrap gap-2">
-        {project.tech.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-full border border-slate-200 bg-white/60 dark:border-white/10 dark:bg-white/5 px-3 py-1.5 text-[11px] font-extrabold text-slate-600 dark:text-slate-300 flex items-center gap-1.5"
-          >
-            {getTechIcon(tech)}
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div className="relative z-10 mt-auto flex items-center justify-between border-t border-slate-200 pt-6 dark:border-white/10">
-        <div className="flex items-center gap-3">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-white/70 text-slate-600 transition hover:-translate-y-1 hover:text-brand-indigo dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-brand-cyan clickable"
-            title="View GitHub repository"
-          >
-            <FaGithub />
-          </a>
-          {project.demo && project.demo !== "#" && (
+        {/* Actions */}
+        <div className="mt-auto pt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 dark:border-[rgba(148,163,184,0.15)]">
+          <div className="flex items-center gap-2.5">
             <a
-              href={project.demo}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-white/70 text-slate-600 transition hover:-translate-y-1 hover:text-brand-indigo dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-brand-cyan clickable"
-              title="Launch live demo"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-100 px-3.5 py-2 text-xs font-semibold text-slate-800 transition hover:border-[#3B82F6]/50 hover:text-[#3B82F6] dark:border-[rgba(148,163,184,0.2)] dark:bg-[#0D1220] dark:text-[#F8FAFC] dark:hover:border-[#22D3EE]/50 dark:hover:text-[#22D3EE] clickable"
             >
-              <FaExternalLinkAlt />
+              <FaGithub /> GitHub
             </a>
-          )}
+
+            {hasDemo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] px-3.5 py-2 text-xs font-semibold text-white shadow-[0_0_16px_rgba(59,130,246,0.3)] transition hover:opacity-95 clickable"
+              >
+                <FaExternalLinkAlt className="text-[10px]" /> Live Demo
+              </a>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onSelect && onSelect(project)}
+            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3B82F6] dark:text-[#22D3EE] hover:underline clickable"
+          >
+            Details <FaArrowRight className="text-[10px]" />
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={() => onSelect && onSelect(project)}
-          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-indigo dark:text-brand-cyan hover:underline clickable"
-        >
-          Case study <FaArrowRight className="text-[10px]" />
-        </button>
       </div>
     </motion.article>
   );

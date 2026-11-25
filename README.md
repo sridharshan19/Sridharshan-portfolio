@@ -236,18 +236,31 @@ portfolio/
 ├── client/
 │   ├── src/
 │   │   │
+│   │   ├── animations/
+│   │   │   └── motionVariants.js
+│   │   │
 │   │   ├── assets/
-│   │   │   ├── Sri.jpg
-│   │   │   ├── Sri.png
-│   │   │   └── logos/
+│   │   │   └── Sri.png
 │   │   │
 │   │   ├── components/
-│   │   │   ├── ProjectModal.jsx
-│   │   │   ├── ProjectsSection.jsx
-│   │   │   ├── HeroSection.jsx
 │   │   │   ├── AboutSection.jsx
+│   │   │   ├── AchievementsSection.jsx
+│   │   │   ├── CertificationsSection.jsx
 │   │   │   ├── ContactForm.jsx
-│   │   │   └── Navbar.jsx
+│   │   │   ├── ContactSection.jsx
+│   │   │   ├── CustomCursor.jsx
+│   │   │   ├── EducationSection.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Hero3D.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── InternshipSection.jsx
+│   │   │   ├── LoadingScreen.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── ParticleBackground.jsx
+│   │   │   ├── ProfilesSection.jsx
+│   │   │   ├── ProjectCard.jsx
+│   │   │   ├── ProjectModal.jsx
+│   │   │   └── ProjectsSection.jsx
 │   │   │
 │   │   ├── constants/
 │   │   │   └── portfolioData.js
@@ -255,24 +268,32 @@ portfolio/
 │   │   ├── pages/
 │   │   │   ├── Home.jsx
 │   │   │   ├── About.jsx
+│   │   │   ├── Skills.jsx
 │   │   │   ├── Projects.jsx
 │   │   │   ├── Resume.jsx
 │   │   │   ├── Blog.jsx
-│   │   │   └── Contact.jsx
+│   │   │   ├── Contact.jsx
+│   │   │   └── NotFound.jsx
 │   │   │
 │   │   ├── services/
-│   │   │   └── api.js
+│   │   │   └── portfolioService.js
 │   │   │
 │   │   └── App.jsx
 │   │
 │   ├── public/
+│   │   └── favicon.svg
 │   └── package.json
 │
 ├── server/
+│   ├── controllers/
+│   │   ├── contactController.js
+│   │   └── portfolioController.js
+│   │
 │   ├── data/
 │   │   └── portfolioData.json
 │   │
 │   ├── routes/
+│   │   ├── contactRoutes.js
 │   │   └── portfolioRoutes.js
 │   │
 │   ├── app.js
@@ -343,7 +364,7 @@ npm run dev
 The frontend will be available at:
 
 ```text
-http://localhost:5173
+http://localhost:5175
 ```
 
 ---
@@ -352,7 +373,7 @@ http://localhost:5173
 
 | Service     | URL                     |
 | ----------- | ----------------------- |
-| Frontend    | `http://localhost:5173` |
+| Frontend    | `http://localhost:5175` |
 | Backend API | `http://localhost:5005` |
 
 ---
@@ -501,17 +522,13 @@ Layouts, project cards, navigation, animations, and typography adapt according t
 
 The Express backend exposes portfolio information through REST endpoints.
 
-Example structure:
-
 ```text
-GET /api/projects
-GET /api/skills
-GET /api/experience
-GET /api/education
-GET /api/achievements
+GET /
+GET /api/portfolio
+POST /api/contact
 ```
 
-The frontend consumes these endpoints through reusable service functions.
+The frontend consumes this endpoint through `client/src/services/portfolioService.js` and falls back to `client/src/constants/portfolioData.js` if unavailable.
 
 ---
 
@@ -523,7 +540,7 @@ If you'd like to connect, collaborate, or discuss a project:
 
 **GitHub:** github.com/sridharshan19
 
-**LinkedIn:** linkedin.com/in/sridharshanm-n-2564232b6
+**LinkedIn:** linkedin.com/in/sridharshan-m-n-2564232b6
 
 ---
 
